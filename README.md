@@ -1,4 +1,4 @@
-per10-li-liu-finalprojec
+per10-li-liu-finalproject
 ========================
 
 final project
