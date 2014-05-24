@@ -19,10 +19,10 @@ void draw() {
 }
 void keyPressed(){
   if (key == 'a'){
-    dir = -1;
+    dir = 1;
   }
   else if (key == 'd'){
-    dir = 1;
+    dir = -1;
   }
   else{
     dir = 0;
