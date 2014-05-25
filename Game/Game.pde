@@ -28,19 +28,21 @@ void setup() {
 }
 
 void draw() {
-  if (keyPressed ){
+// if (keyPressed ){
       background(255);
       for (Platform platform: platforms){
       platform.display(p.locX, p.locY, dir);
+      }
       p.display();   
       fill(0);
       rect(0,580, 1000, 100);
-      }
+      
   
-  }
+  //}
   
 }
 void keyPressed(){
+  
   if (key == 'a'){
     dir = 1;
     p.locX -= 3;
@@ -50,7 +52,7 @@ void keyPressed(){
     p.locX += 3;
   }
   else if (key == 'w'){
-    //p.jump();
+    p.jump();
   }
   
   else{
