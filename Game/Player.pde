@@ -9,9 +9,9 @@ int locY = 100;
 
   
 void display(){
-  stroke(50);
-  fill(50);
-  rect(x, y, 15, 20);
+  noStroke();
+  fill(255,0,0);
+  rect(x, y, 25, 30);
   
 }
   

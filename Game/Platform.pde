@@ -24,7 +24,7 @@ class Platform{
   
   
   void display(int pX, int pY){
-      stroke(0);
+    noStroke();
     fill(0);
     rect(locX - pX, locY, width, height);
     
@@ -34,16 +34,25 @@ class Platform{
   void display(int pX, int pY, int dir){
     
      
-
-    stroke(0);
+    noStroke();
 
     fill(0);
     rect(locX - pX, locY, width, height);
     //rect(locX, locY, 25, 5);
-   stroke(255);
+   /*
+   fill(255);
    
-   line( (locX-pX) + (width/2) + (width/2 * dir * -1), locY, (locX-pX) + (width/2) + (width/2 * dir * -1), locY+height);
-    
+   if (dir == 1){
+   rect( (locX-pX), locY, -3, height);
+   }
+   else{
+     rect( (locX-pX) + width, locY, 3, height);
+   }
+   */
+   
+   
+   //line( (locX-pX) + (width/2) + (width/2 * dir * -1), locY, (locX-pX) + (width/2) + (width/2 * dir * -1), locY+height);
+ //  line( (locX-pX) + (width/2) + (width/2 * dir * -1 -dir), locY, (locX-pX) + (width/2) + (width/2 * dir * -1 - dir), locY+height); 
   // line((locX-pX) + (width/2) + (width/2 * dir *-1), locY, (locX-pX) + (width/2) + (width/2 * dir * -1), locY+height));
    //line(x+(width/2)+(width/2*dir*-1), y-1, x+(width/2)+(width/2*dir*-1), y+height+1);
     //move(dir);
