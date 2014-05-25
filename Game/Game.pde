@@ -13,7 +13,9 @@ Player p = new Player();
 
 int dir = 0;  // Direction: 1 for right, -1 for left, 0 for stopped
 
-
+boolean a = false;
+boolean d = false;
+boolean w = false;
 
 void setup() {
   size(1000, 650);
@@ -29,6 +31,8 @@ void setup() {
 
 void draw() {
 // if (keyPressed ){
+      playerMove();
+
       background(255);
       for (Platform platform: platforms){
       platform.display(p.locX, p.locY, dir);
@@ -41,29 +45,51 @@ void draw() {
   //}
   
 }
-void keyPressed(){
-  
-  if (key == 'a'){
-    dir = 1;
-    p.locX -= 3;
-  }
-  else if (key == 'd'){
-    dir = -1;
-    p.locX += 3;
-  }
-  else if (key == 'w'){
-    p.jump();
-  }
-  
-  else{
-    dir = 0;
-  }
+
+void playerMove(){
+     if (a){
+        dir = 1;
+        p.locX -= 3;
+      }
+      else if (d){
+        dir = -1;
+        p.locX += 3;
+      }
+      if (w){
+        p.jump();
+      }
+        
+       
+
 }
-  
-  
-  
+
+
+
+void keyPressed(){
+ if (key == 'a'){
+   a = true;
+ }
+ if (key == 'd'){
+   d = true;
+ }
+ if (key == 'w'){
+   w = true;
+ }
+ 
+} 
   
 
 
 
+void keyReleased(){
+   if (key == 'a'){
+   a = false;
+ }
+ if (key == 'd'){
+   d = false;
+ }
+ if (key == 'w'){
+   w = false;
+ }
+}
 

@@ -16,6 +16,10 @@ void display(){
   if (isJumping){
     yVel += gravity;
     y += yVel;
+    if (yVel >= 0){
+
+    }
+    
     if (y >= 550){
           yVel = 0;
           isJumping = false;
@@ -33,9 +37,16 @@ void jump(){
     isJumping = true;
     yVel -= 20;
   }
+}
   
+  
+
   
   
 }
   
-}
+  
+  
+
+  
+
