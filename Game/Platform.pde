@@ -43,7 +43,9 @@ class Platform{
   void display(int pX, int pY, int dir){
     
      
+
     stroke(0);
+
     fill(0);
     rect(locX - pX, locY, width, height);
     //rect(locX, locY, 25, 5);
