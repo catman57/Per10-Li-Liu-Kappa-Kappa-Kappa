@@ -15,21 +15,12 @@ class Platform{
     this.height = height; 
   }
   
-/*
+
   
-  void display(int dir){
- 
-    stroke(0);
-    fill(0);
-    rect(x, y, width, height);
-    
-    stroke(255);
-    
-    line(x+(width/2)+(width/2*dir*-1), y-1, x+(width/2)+(width/2*dir*-1), y+height+1);
-    move(dir);
-    
-  }
-  */
+
+  
+  
+  
   
   
   void display(int pX, int pY){
@@ -43,11 +34,9 @@ class Platform{
   void display(int pX, int pY, int dir){
     
      
-<<<<<<< HEAD
-    //stroke(0);
-=======
+
     stroke(0);
->>>>>>> origin/coordinates
+
     fill(0);
     rect(locX - pX, locY, width, height);
     //rect(locX, locY, 25, 5);
@@ -61,13 +50,7 @@ class Platform{
     
     
   }
-  
-  /*
-  void move(int dir){
-    x+= (1 * dir);
-       
-  }
-  */
+
   
     
     
