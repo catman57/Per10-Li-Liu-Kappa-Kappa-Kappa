@@ -18,13 +18,9 @@ boolean d = false;
 boolean w = false;
 
 void setup() {
-<<<<<<< HEAD
-<<<<<<< HEAD
   size(480, 480);
   background(155);
-=======
-=======
->>>>>>> cbe11be9acd91d3e3d6d90c8ff6aa73590c40f38
+
   size(1000, 650);
   background(255);
   fill(0);
@@ -34,10 +30,7 @@ void setup() {
     platform.display(p.locX, p.locY);
   }
   //a.display(p.locX, p.locY);
-<<<<<<< HEAD
->>>>>>> cbe11be9acd91d3e3d6d90c8ff6aa73590c40f38
-=======
->>>>>>> cbe11be9acd91d3e3d6d90c8ff6aa73590c40f38
+
 }
 
 void draw() {
