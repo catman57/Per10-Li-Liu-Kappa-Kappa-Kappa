@@ -1,42 +1,37 @@
 class Platform{
   
-  //int x;  //top left X coord
-  //int y;  //top left y coord
-  
-  int locX;
-  int locY;
+  int x;  //top left X coord
+  int y;  //top left y coord
   int width;   
   int height;
   
-  Platform(int locX, int locY, int width, int height){
-    this.locX = locX; 
-    this.locY = locY;
+  Platform(int x, int y, int width, int height){
+    this.x = x; 
+    this.y = y;
     this.width = width;
     this.height = height; 
   }
   
 
+  
+  void display(int dir){
  
-  void display(int pX, int pY){
-    noStroke();
+    stroke(0);
     fill(0);
-    rect(locX - pX, locY, width, height);
+    rect(x, y, width, height);
     
+    stroke(255);
+    
+    line(x+(width/2)+(width/2*dir*-1), y, x+(width/2)+(width/2*dir*-1), y+height);
+    move(dir);
     
   }
   
-  void display(int pX, int pY, int dir){
-    
-     
-    noStroke();
-
-    fill(0);
-    rect(locX - pX, locY, width, height);
-
-    
-    
+  
+  void move(int dir){
+    x+= (1 * dir);
+       
   }
-
   
     
     

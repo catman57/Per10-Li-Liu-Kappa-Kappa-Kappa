@@ -1,23 +1,13 @@
 
 
-Platform[] platforms = {new Platform(200, 400, 80, 30), 
-new Platform(800, 200, 120, 30),
-new Platform(1200, 400, 100, 30)
-
-};
-
-//Platform a = new Platform(200, 200, 40, 15);
-//Platform b = new Platform(800, 400, 80, 15);
-
-Player p = new Player();
+Platform a = new Platform(100, 50, 26, 5);
 
 int dir = 0;  // Direction: 1 for right, -1 for left, 0 for stopped
 
-boolean a = false;
-boolean d = false;
-boolean w = false;
+
 
 void setup() {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
   size(480, 480);
@@ -38,69 +28,33 @@ void setup() {
 >>>>>>> cbe11be9acd91d3e3d6d90c8ff6aa73590c40f38
 =======
 >>>>>>> cbe11be9acd91d3e3d6d90c8ff6aa73590c40f38
+=======
+  size(480, 120);
+  background(255);
+>>>>>>> parent of e0527bc... Paul's work. Git hub doesnt let me do anything.
 }
 
 void draw() {
-// if (keyPressed ){
-      playerMove();
-
-      background(255);
-      for (Platform platform: platforms){
-      platform.display(p.locX, p.locY, dir);
-      }
-      p.display();   
-      fill(0);
-      rect(0,580, 1000, 100);
-      
-  
-  //}
+  if (keyPressed && dir != 0){
+  a.display(dir);
+  }
   
 }
-
-void playerMove(){
-     if (a){
-        dir = 1;
-        p.locX -= 3;
-      }
-      else if (d){
-        dir = -1;
-        p.locX += 3;
-      }
-      if (w){
-        p.jump();
-      }
-        
-       
-
-}
-
-
-
 void keyPressed(){
- if (key == 'a'){
-   a = true;
- }
- if (key == 'd'){
-   d = true;
- }
- if (key == 'w'){
-   w = true;
- }
- 
-} 
+  if (key == 'a'){
+    dir = 1;
+  }
+  else if (key == 'd'){
+    dir = -1;
+  }
+  else{
+    dir = 0;
+  }
+}
+  
+  
+  
   
 
 
-
-void keyReleased(){
-   if (key == 'a'){
-   a = false;
- }
- if (key == 'd'){
-   d = false;
- }
- if (key == 'w'){
-   w = false;
- }
-}
 
