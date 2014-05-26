@@ -13,7 +13,16 @@ boolean isJumping = false;
 
   
 void display(){
-  if (isJumping){
+
+  noStroke();
+  fill(255,0,0);
+  rect(x, y, 25, 30);
+  
+  
+}
+
+void land(){
+    if (isJumping){
     yVel += gravity;
     y += yVel;
     if (yVel >= 0){
@@ -25,12 +34,9 @@ void display(){
           isJumping = false;
     }
   }
-  noStroke();
-  fill(255,0,0);
-  rect(x, y, 25, 30);
-  
   
 }
+
 
 void jump(){
   if (!isJumping){
