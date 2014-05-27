@@ -13,7 +13,7 @@ boolean isJumping = false;
 
   
 void display(){
-
+  land();
   noStroke();
   fill(255,0,0);
   rect(x, y, 25, 30);
