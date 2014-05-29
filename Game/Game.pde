@@ -1,11 +1,7 @@
 
 
-Platform[] platforms = {new Platform(200, 400, 80, 30), 
-new Platform(800, 200, 120, 30),
-new Platform(1200, 400, 100, 30)
 
-};
-
+ Platform[] platforms = new Platform[10];
 //Platform a = new Platform(200, 200, 40, 15);
 //Platform b = new Platform(800, 400, 80, 15);
 
@@ -33,6 +29,17 @@ void setup() {
   background(255);
   fill(0);
   rect(0,580, 1000, 100);
+ 
+//{new Platform(200, 400, 80, 30), 
+//new Platform(800, 200, 120, 30),
+//new Platform(1200, 400, 100, 30)
+  randomSeed(0);  
+int i = 0;
+while (i<platforms.length){
+  platforms[i]= new Platform((int)random(1500),(int)random(400),60,40);
+  i++;
+}
+
   p.display();
   for (Platform platform: platforms){
     platform.display(p.locX, p.locY);
@@ -61,11 +68,11 @@ void draw() {
 void playerMove(){
      if (a){
         dir = 1;
-        p.locX -= 3;
+        p.locX -= 5;
       }
       else if (d){
         dir = -1;
-        p.locX += 3;
+        p.locX += 5;
       }
       if (w){
         p.jump();
