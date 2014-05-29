@@ -18,16 +18,16 @@ boolean d = false;
 boolean w = false;
 
 void setup() {
-<<<<<<< HEAD
+
 
   size(480, 480);
   background(155);
-=======
-=======
-=======
+
+
+
   size(480, 480);
   background(155);
->>>>>>> 69c305d162193dea7bf24f2461621d4bcf758948
+
 
   size(1000, 650);
   background(255);
