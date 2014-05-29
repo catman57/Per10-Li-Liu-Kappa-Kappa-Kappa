@@ -36,6 +36,12 @@ class Platform{
     
     
   }
+  
+  
+  boolean intersects(int objX, int objY){
+    return(objX >= locX && objX <= locX + width && objY >= locY && objY <= locY + height);
+    
+  }
 
   
     

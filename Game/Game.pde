@@ -40,6 +40,9 @@ while (i<platforms.length){
   i++;
 }
 
+platforms[0] = new Platform(100, 100, 10,10);
+println(platforms[0].intersects(110,111));
+
   p.display();
   for (Platform platform: platforms){
     platform.display(p.locX, p.locY);
