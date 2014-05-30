@@ -40,8 +40,7 @@ while (i<platforms.length){
   i++;
 }
 
-platforms[0] = new Platform(100, 100, 10,10);
-println(platforms[0].intersects(110,111));
+platforms[0] = new Platform(700, 550, 60,40);
 
   p.display();
   for (Platform platform: platforms){
@@ -54,7 +53,6 @@ println(platforms[0].intersects(110,111));
 void draw() {
 // if (keyPressed ){
       playerMove();
-
       background(255);
       for (Platform platform: platforms){
       platform.display(p.locX, p.locY, dir);
@@ -73,7 +71,8 @@ void playerMove(){
         dir = 1;
         p.locX -= 5;
       }
-      else if (d){
+      else if (d & doesNotCollide()){
+        
         dir = -1;
         p.locX += 5;
       }
@@ -84,6 +83,29 @@ void playerMove(){
        
 
 }
+
+boolean doesNotCollide(){
+  
+  println("plat: " + platforms[0].locX);
+  println("player: " + p.locX);
+  //return !(platforms[0].intersects(p.locX, 551));
+  
+  for (Platform platform: platforms){
+    if (platform.intersects(p.locX , 551)){
+      println("intersects!");
+      return false;
+    }
+  }
+  return true;
+  
+  
+}
+    
+    
+  
+  
+  
+
 
 
 
