@@ -12,8 +12,9 @@ int gravity = 1;
 boolean isJumping = false;
 
   
-void display(){
-  land();
+void display(Platform[] platforms){
+  land(platforms);
+  
   noStroke();
   fill(255,0,0);
   rect(x, y, 25, 30);
@@ -21,7 +22,7 @@ void display(){
   
 }
 
-void land(){
+void land(Platform[] platforms){
     if (isJumping){
     yVel += gravity;
     y += yVel;
@@ -33,10 +34,22 @@ void land(){
           yVel = 0;
           isJumping = false;
     }
+    if (landed(platforms)){
+      
+    }
   }
   
 }
 
+boolean landed(Platform[] platforms){   //doesn't work yet
+  for (Platform platform : platforms){
+    
+    
+  }
+  return true;
+  
+  
+}
 
 void jump(){
   if (!isJumping){

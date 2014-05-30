@@ -41,8 +41,9 @@ while (i<platforms.length){
 }
 
 platforms[0] = new Platform(700, 550, 60,40);
+platforms[1] = new Platform (1000,400, 60, 100);
 
-  p.display();
+  p.display(platforms);
   for (Platform platform: platforms){
     platform.display(p.locX, p.locY);
   }
@@ -57,7 +58,7 @@ void draw() {
       for (Platform platform: platforms){
       platform.display(p.locX, p.locY, dir);
       }
-      p.display();   
+      p.display(platforms);   
       fill(0);
       rect(0,580, 1000, 100);
       
