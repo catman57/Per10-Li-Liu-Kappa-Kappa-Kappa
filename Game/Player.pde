@@ -10,6 +10,7 @@ int locY = 100;
 int yVel = 0;
 int gravity = 1;
 boolean isJumping = false;
+boolean isLanding = false;
 
   
 void display(Platform[] platforms){
@@ -26,27 +27,42 @@ void land(Platform[] platforms){
     if (isJumping){
     yVel += gravity;
     y += yVel;
+    
+    
+    
+    if (isLanding && landed(platforms)){
+      
+      println("landed");
+      isJumping = false;
+      isLanding = false;
+      yVel = 0;
+    }
+    
+    
+    
+    
+    
     if (yVel >= 0){
-
+      isLanding = true;
     }
     
     if (y >= 550){
           yVel = 0;
           isJumping = false;
     }
-    if (landed(platforms)){
-      
-    }
   }
   
 }
 
 boolean landed(Platform[] platforms){   //doesn't work yet
+  println(locX + ", " + y);
   for (Platform platform : platforms){
-    
+    if (platform.intersects(locX, y  )){
+      return true;
+    }
     
   }
-  return true;
+  return false;
   
   
 }

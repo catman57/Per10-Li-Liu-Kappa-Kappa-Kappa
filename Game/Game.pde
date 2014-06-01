@@ -36,7 +36,7 @@ void setup() {
   randomSeed(0);  
 int i = 0;
 while (i<platforms.length){
-  platforms[i]= new Platform(700+ (i*50),600-(i*50),60,40);
+  platforms[i]= new Platform(700+ (i*100),600-(i*50),80,60);
   i++;
 }
 
@@ -86,14 +86,11 @@ void playerMove(){
 }
 
 boolean doesNotCollide(int shift){    //shift moves the coordinate that is checked when moving left
-  
-  println("plat: " + platforms[0].locX);
-  println("player: " + p.locX);
+
   //return !(platforms[0].intersects(p.locX, 551));
   
   for (Platform platform: platforms){
     if (platform.intersects(p.locX + shift*25 , p.y)){
-      println("intersects!");
       return false;
     }
   }
