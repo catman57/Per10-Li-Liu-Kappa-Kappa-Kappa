@@ -36,12 +36,12 @@ void setup() {
   randomSeed(0);  
 int i = 0;
 while (i<platforms.length){
-  platforms[i]= new Platform((int)random(1500),(int)random(400),60,40);
+  platforms[i]= new Platform(700+ (i*50),600-(i*50),60,40);
   i++;
 }
 
 platforms[0] = new Platform(700, 550, 60,40);
-platforms[1] = new Platform (1000,400, 60, 100);
+//platforms[1] = new Platform (1000,400, 60, 100);
 
   p.display(platforms);
   for (Platform platform: platforms){
