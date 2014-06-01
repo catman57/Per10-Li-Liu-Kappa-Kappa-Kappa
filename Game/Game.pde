@@ -36,7 +36,7 @@ void setup() {
   randomSeed(0);  
 int i = 0;
 while (i<platforms.length){
-  platforms[i]= new Platform(700+ (i*100),600-(i*50),80,60);
+  platforms[i]= new Platform(700+ (i*100),600-(i*50),80,40);
   i++;
 }
 

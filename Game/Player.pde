@@ -26,16 +26,19 @@ void display(Platform[] platforms){
 void land(Platform[] platforms){
     if (isJumping){
     yVel += gravity;
-    y += yVel;
+    //y += yVel;
     
     
     
-    if (isLanding && landed(platforms)){
+    if (isLanding && landed(platforms, yVel)){
       
       println("landed");
       isJumping = false;
       isLanding = false;
       yVel = 0;
+    }
+    else{
+     y += yVel; 
     }
     
     
@@ -54,10 +57,10 @@ void land(Platform[] platforms){
   
 }
 
-boolean landed(Platform[] platforms){   //doesn't work yet
+boolean landed(Platform[] platforms, int yVel){   //doesn't work yet
   println(locX + ", " + y);
   for (Platform platform : platforms){
-    if (platform.intersects(locX, y  )){
+    if (platform.intersects(locX, y + 30 + yVel  )){
       return true;
     }
     
