@@ -30,7 +30,7 @@ void setup() {
 //{new Platform(200, 400, 80, 30), 
 //new Platform(800, 200, 120, 30),
 //new Platform(1200, 400, 100, 30)
-<<<<<<< HEAD
+
   //randomSeed(0);  
 int i = 0;
 while (i<platforms.length){
@@ -42,8 +42,8 @@ while (i<platforms.length){
    }
   i++;
 }
-=======
->>>>>>> 4015c292d5f0eff37a0d0d3dddf5edc99ec215ee
+
+
 
   createLevel();
 
