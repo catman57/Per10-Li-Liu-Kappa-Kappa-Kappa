@@ -28,10 +28,13 @@ void land(Platform[] platforms){
     if (isJumping){
     yVel += gravity;
     //y += yVel;
+    if (!isLanding && landed(platforms, yVel, 0)){
+     println("hit"); 
+      
+    }
     
     
-    
-    if (isLanding && landed(platforms, yVel)){
+    else if (isLanding && landed(platforms, yVel, 1)){
       
       isJumping = false;
       isLanding = false;
@@ -53,29 +56,32 @@ void land(Platform[] platforms){
     if (y >= 550){
           yVel = 0;
           isJumping = false;
+          isLanding = false;
     }
   }
   
 }
 
-boolean landed(Platform[] platforms, int yVel){   //doesn't work yet
+boolean landed(Platform[] platforms, int yVel, int dir){   //if dir==1, for falling; if dir==0, for checking if hit the bottom of a platform
   for (Platform platform : platforms){
-    if (platform.intersects(locX, y + 30 + yVel)
-       || platform.intersects(locX - 25, y + 30 + yVel) ){   //If either edge of player is on the platform
+    if (platform.intersects(locX, y + 30*dir + yVel)
+       || platform.intersects(locX - 25, y + 30*dir + yVel) ){   //If either edge of player is on the platform
        
-      //println(platform.locY);
-    //  println(y+30);
-      //println(platform.locY - (y+30));
-   //   println();
+
       needToFall = platform.locY - (y + 30);
       return true;
     }
     
   }
   return false;
-  
-  
+   
 }
+
+
+
+
+
+
 
 void jump(){
   if (!isJumping){

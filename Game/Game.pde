@@ -16,13 +16,7 @@ boolean w = false;
 void setup() {
 
 
-  size(480, 480);
-  background(155);
 
-
-
-  size(480, 480);
-  background(155);
 
 
   size(1000, 650);
@@ -36,7 +30,7 @@ void setup() {
   randomSeed(0);  
 int i = 0;
 while (i<platforms.length){
-  platforms[i]= new Platform(700+ (i*100),600-(i*50),80,40);
+  platforms[i]= new Platform(700+ (i*150),600-(i*50),80,40);
   i++;
 }
 
