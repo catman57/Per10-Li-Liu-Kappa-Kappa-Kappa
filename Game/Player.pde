@@ -29,7 +29,9 @@ void land(Platform[] platforms){
     yVel += gravity;
     //y += yVel;
     if (!isLanding && landed(platforms, yVel, 0)){
-     println("hit"); 
+      y -= needToFall;
+     yVel = 0;
+     isLanding = true;
       
     }
     
@@ -68,7 +70,7 @@ boolean landed(Platform[] platforms, int yVel, int dir){   //if dir==1, for fall
        || platform.intersects(locX - 25, y + 30*dir + yVel) ){   //If either edge of player is on the platform
        
 
-      needToFall = platform.locY - (y + 30);
+      needToFall = abs(platform.locY + 40 - 40*dir - (y + 30*dir));
       return true;
     }
     
