@@ -29,6 +29,7 @@ void land(Platform[] platforms){
     if (isJumping){
       yVel += gravity;
       //y += yVel;
+
       if (!isLanding && landed(platforms, yVel, 0)){
         y -= needToFall;
        yVel = 0;
@@ -51,18 +52,19 @@ void land(Platform[] platforms){
       }
     
     
-    
+           if (y + yVel>= 550){
+            yVel = 0;
+           y += (580-(y+30));
+            isJumping = false;
+            isLanding = false;
+      }
     
       
       if (yVel >= 0){
         isLanding = true;
       }
       
-      if (y >= 550){
-            yVel = 0;
-            isJumping = false;
-            isLanding = false;
-      }
+
   }
   
 }
