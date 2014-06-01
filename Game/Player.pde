@@ -13,13 +13,24 @@ boolean isJumping = false;
 boolean isLanding = false;
 int needToFall = 0;
 
+int edgeLeft;
+int edgeRight;
   
 void display(Platform[] platforms){
+  offEdge(platforms);
   land(platforms);
   
   noStroke();
   fill(255,0,0);
   rect(x, y, 25, 30);
+  
+  
+}
+
+void offEdge(Platform[] platforms){
+  if (locX + 525 - 25 < edgeLeft || locX + 525 > edgeRight){
+    isJumping = true;
+  }
   
   
 }
@@ -76,6 +87,10 @@ boolean landed(Platform[] platforms, int yVel, int dir){   //if dir==1, for fall
        
 
       needToFall = abs(platform.locY + 40 - 40*dir - (y + 30*dir));
+      
+      edgeLeft = platform.locX;
+      edgeRight = platform.locX + platform.width;
+      
       return true;
     }
     
