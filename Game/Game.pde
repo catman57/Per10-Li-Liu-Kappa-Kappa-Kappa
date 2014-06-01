@@ -8,7 +8,7 @@ ArrayList<Check> checks = new ArrayList<Check>();
 Finish finish = new Finish(2500, 565);
 //Check[] checks = new Check[1];
 
-Player p = new Player();
+Player p;
 
 int dir = 0;  // Direction: 1 for right, -1 for left, 0 for stopped
 
@@ -23,24 +23,16 @@ void setup() {
 
 
   size(1000, 650);
-  background(255);
+  background(204,255,255);
   fill(0);
   rect(0,580, 1000, 100);
- 
+  p = new Player();
 //{new Platform(200, 400, 80, 30), 
 //new Platform(800, 200, 120, 30),
 //new Platform(1200, 400, 100, 30)
-  randomSeed(0);  
-int i = 0;
-while (i<platforms.length){
-  platforms[i]= new Platform(700+ (i*150),600-(i*50),80,40);
-  i++;
-}
 
-platforms[0] = new Platform(1500, 400, 400,40);
-checks.add( new Check(1000, 565));
-checks.add( new Check(2000, 565));
-//platforms[1] = new Platform (1000,400, 60, 100);
+  createLevel();
+
 
   p.display(platforms);
   for (Platform platform: platforms){
@@ -54,11 +46,32 @@ checks.add( new Check(2000, 565));
 
 }
 
+void createLevel(){
+   randomSeed(0);  
+  
+  
+int i = 0;
+while (i<platforms.length){
+  platforms[i]= new Platform(700+ (i*150) + (int)random(50),600-(i*50) - (int)random(10),80 + (int)random(50),40);
+  i++;
+}
+
+checks.add( new Check(1000, 565));
+checks.add( new Check(2000, 565));
+checks.add( new Check(platforms[4].locX + 25, platforms[4].locY - 15));
+//platforms[1] = new Platform (1000,400, 60, 100);
+ 
+  
+  
+  
+}
+
+
 void draw() {
 // if (keyPressed ){
   
       playerMove();
-      background(255);
+      background(204,255,255);
       for (Platform platform: platforms){
       platform.display(p.locX, p.locY, dir);
       }
@@ -75,6 +88,7 @@ void draw() {
       }
       if (checks.isEmpty() && finish.intersects(p.locX, p.y)){
         println("You win."); 
+        setup();
       }
       
       
