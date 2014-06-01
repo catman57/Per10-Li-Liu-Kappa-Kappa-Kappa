@@ -66,7 +66,7 @@ void createLevel(){
   
 int i = 0;
 while (i<platforms.length){
-  platforms[i]= new Platform(700+ (i*150) + (int)random(50),600-(i*50) - (int)random(10),80 + (int)random(50),40);
+  platforms[i]= new Platform(700+ (i*150) + (int)random(50),600-(i*50) - (int)random(10),80 + (int)random(50),30);
   i++;
 }
 
