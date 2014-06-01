@@ -3,6 +3,7 @@ class Goal{
   int locX;
   int locY;
   
+  
   Goal(int locX, int locY){
     this.locX = locX;
     this.locY = locY;
