@@ -34,7 +34,7 @@ while (i<platforms.length){
   i++;
 }
 
-platforms[0] = new Platform(700, 550, 60,40);
+platforms[0] = new Platform(1500, 400, 400,40);
 //platforms[1] = new Platform (1000,400, 60, 100);
 
   p.display(platforms);

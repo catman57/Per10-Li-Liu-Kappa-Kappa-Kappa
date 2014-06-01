@@ -25,41 +25,44 @@ void display(Platform[] platforms){
 }
 
 void land(Platform[] platforms){
+   // println(yVel);
     if (isJumping){
-    yVel += gravity;
-    //y += yVel;
-    if (!isLanding && landed(platforms, yVel, 0)){
-      y -= needToFall;
-     yVel = 0;
-     isLanding = true;
+      yVel += gravity;
+      //y += yVel;
+      if (!isLanding && landed(platforms, yVel, 0)){
+        y -= needToFall;
+       yVel = 0;
+       isLanding = true;
+       isJumping = true;
+       println("up stop");
+      }
+    
       
-    }
+      else if (isLanding && landed(platforms, yVel, 1)){
+        
+        isJumping = false;
+        isLanding = false;
+        yVel = 0;
+        y += needToFall;
+        println("fall stop");
+      }
+      else{
+       y += yVel; 
+      }
     
     
-    else if (isLanding && landed(platforms, yVel, 1)){
+    
+    
       
-      isJumping = false;
-      isLanding = false;
-      yVel = 0;
-      y += needToFall;
-    }
-    else{
-     y += yVel; 
-    }
-    
-    
-    
-    
-    
-    if (yVel >= 0){
-      isLanding = true;
-    }
-    
-    if (y >= 550){
-          yVel = 0;
-          isJumping = false;
-          isLanding = false;
-    }
+      if (yVel >= 0){
+        isLanding = true;
+      }
+      
+      if (y >= 550){
+            yVel = 0;
+            isJumping = false;
+            isLanding = false;
+      }
   }
   
 }
@@ -78,7 +81,6 @@ boolean landed(Platform[] platforms, int yVel, int dir){   //if dir==1, for fall
   return false;
    
 }
-
 
 
 
