@@ -90,6 +90,7 @@ boolean landed(Platform[] platforms, int yVel, int dir){   //if dir==1, for fall
 void jump(){
   if (!isJumping){
     isJumping = true;
+    isLanding = false;
     yVel -= 20;
   }
 }

@@ -4,7 +4,7 @@
  Platform[] platforms = new Platform[10];
 //Platform a = new Platform(200, 200, 40, 15);
 //Platform b = new Platform(800, 400, 80, 15);
-
+Goal g = new Goal(1000, 565);
 Player p = new Player();
 
 int dir = 0;  // Direction: 1 for right, -1 for left, 0 for stopped
@@ -42,16 +42,25 @@ platforms[0] = new Platform(1500, 400, 400,40);
     platform.display(p.locX, p.locY);
   }
   //a.display(p.locX, p.locY);
+  g.display(p.locX, p.locY);
 
 }
 
 void draw() {
 // if (keyPressed ){
+      println(g.locX + ", "+  g.locY);
+      println(p.locX + ", " +  p.y);
+      println();
+  
       playerMove();
       background(255);
       for (Platform platform: platforms){
       platform.display(p.locX, p.locY, dir);
       }
+      if (g.intersects(p.locX, p.y)){
+        println("intersects");
+      }
+      g.display(p.locX, p.locY, dir);
       p.display(platforms);   
       fill(0);
       rect(0,580, 1000, 100);
