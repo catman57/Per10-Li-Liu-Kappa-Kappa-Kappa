@@ -15,7 +15,18 @@ class Platform{
     this.height = height; 
   }
   
-
+  int getLocX(){
+     return this.locX;
+  }
+  int getLocY(){
+      return this.locY;
+  }
+  int getWidth(){
+      return this.width;
+  }
+  int getHeight(){
+      return this.height;
+  }
  
   void display(int pX, int pY){
     noStroke();

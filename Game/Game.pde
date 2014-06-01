@@ -1,7 +1,7 @@
 
 
 
- Platform[] platforms = new Platform[10];
+ Platform[] platforms = new Platform[20];
 //Platform a = new Platform(200, 200, 40, 15);
 //Platform b = new Platform(800, 400, 80, 15);
 
@@ -33,10 +33,15 @@ void setup() {
 //{new Platform(200, 400, 80, 30), 
 //new Platform(800, 200, 120, 30),
 //new Platform(1200, 400, 100, 30)
-  randomSeed(0);  
+  //randomSeed(0);  
 int i = 0;
 while (i<platforms.length){
-  platforms[i]= new Platform(700+ (i*50),600-(i*50),60,40);
+   //randomSeed(i);
+   if(i<10){
+  platforms[i]= new Platform(700+ (i*(int)(random(-50,50))),550-(i*50),60,40);
+   }else if(i<20){
+  platforms[i]= new Platform(700+(i*50),600-(i*50),60,40); 
+   }
   i++;
 }
 
