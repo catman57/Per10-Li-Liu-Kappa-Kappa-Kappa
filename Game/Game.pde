@@ -5,6 +5,7 @@
 //Platform a = new Platform(200, 200, 40, 15);
 //Platform b = new Platform(800, 400, 80, 15);
 ArrayList<Check> checks = new ArrayList<Check>();
+Finish finish = new Finish(2500, 565);
 //Check[] checks = new Check[1];
 
 Player p = new Player();
@@ -38,6 +39,7 @@ while (i<platforms.length){
 
 platforms[0] = new Platform(1500, 400, 400,40);
 checks.add( new Check(1000, 565));
+checks.add( new Check(2000, 565));
 //platforms[1] = new Platform (1000,400, 60, 100);
 
   p.display(platforms);
@@ -48,6 +50,7 @@ checks.add( new Check(1000, 565));
   for (Check check: checks){
   check.display(p.locX, p.locY);
   }
+  finish.display(p.locX, p.locY);
 
 }
 
@@ -70,6 +73,12 @@ void draw() {
          toRemove.add(check); 
         }
       }
+      if (checks.isEmpty() && finish.intersects(p.locX, p.y)){
+        println("You win."); 
+      }
+      
+      
+      finish.display(p.locX, p.locY, dir);
       checks.removeAll(toRemove);
       p.display(platforms);   
       fill(0);

@@ -13,7 +13,7 @@ class Goal{
     
     void display(int pX, int pY){
     noStroke();
-    fill(50, 55, 100);
+    //fill(50, 55, 100);
     rect(locX - pX, locY, 20, 20);
     
     
@@ -24,7 +24,7 @@ class Goal{
      
     noStroke();
 
-    fill(50, 55, 100);
+    //fill(50, 55, 100);
     ellipse(locX - pX, locY, 25, 25);
 
     
