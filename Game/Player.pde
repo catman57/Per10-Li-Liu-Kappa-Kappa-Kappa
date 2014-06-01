@@ -60,11 +60,13 @@ void land(Platform[] platforms){
 
 boolean landed(Platform[] platforms, int yVel){   //doesn't work yet
   for (Platform platform : platforms){
-    if (platform.intersects(locX, y + 30 + yVel  )){
-      println(platform.locY);
-      println(y+30);
-      println(platform.locY - (y+30));
-      println();
+    if (platform.intersects(locX, y + 30 + yVel)
+       || platform.intersects(locX - 25, y + 30 + yVel) ){   //If either edge of player is on the platform
+       
+      //println(platform.locY);
+    //  println(y+30);
+      //println(platform.locY - (y+30));
+   //   println();
       needToFall = platform.locY - (y + 30);
       return true;
     }
