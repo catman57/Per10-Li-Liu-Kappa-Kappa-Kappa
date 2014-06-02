@@ -18,6 +18,7 @@ boolean w = false;
 int savedTime;
 int totalTime=1000;//1 second
 int time = 0;//seconds right now
+int coins= 0;
 void setup() {
 
 
@@ -65,11 +66,11 @@ while (i<platforms.length){
 
 void createLevel(){
   int i = 0; 
-  //randomSeed(0);  
+   
   
   
 while (i<platforms.length){
-<<<<<<< HEAD
+
 
   randomSeed(i);
   platforms[i]= new Platform(700+ (i*150) + (int)random(50),600-(i*50) - (int)random(10),80 + (int)random(50),40);
@@ -77,17 +78,9 @@ while (i<platforms.length){
 
   platforms[i]= new Platform(700+ (i*150) + (int)random(50),600-(i*50) - (int)random(10),80 + (int)random(50),30);
 
-=======
-  /*
-<<<<<<< HEAD
-  randomSeed(i);
-  platforms[i]= new Platform(700+ (i*150) + (int)random(50),600-(i*50) - (int)random(10),80 + (int)random(50),40);
-  
-=======
-*/
+
   platforms[i]= new Platform(700+ (i*150) + (int)random(50),600-(i*50) - (int)random(10),80 + (int)random(50),30);
-//>>>>>>> 23e17518598095377f2b807c3f92e634fda35d19
->>>>>>> 45d7fcfbcee199ddca71b2828e0b31bffca7a0fd
+
   i++;
   if(i<10){
      platforms[i]= new Platform(400+(int)(random(-100,100)), 300 +(int)(random(-410,400)), 80, 40);
@@ -127,11 +120,13 @@ void draw() {
     println("YOU HAVE LOST");
     setup();
   }
+      
       playerMove();
       background(204,255,255);
-      textSize(100);
-      text("HI WALEY", 200,200);
-      text(time, 400,400);
+      textSize(50);
+      text("DEATH APPROACHES ", 200,200);
+      text(20-time,250,250);
+      text(coins,100,200);
       for (Platform platform: platforms){
       platform.display(p.locX, p.locY, dir);
       }
@@ -143,12 +138,15 @@ void draw() {
         
         if (check.intersects(p.locX, p.y)){
           println("fsd");
+          coins ++;
          toRemove.add(check); 
         }
       }
       if (checks.isEmpty() && finish.intersects(p.locX, p.y)){
         println("You win."); 
         time = 0;
+        println(coins);
+        coins= 0;
         setup();
       }
       
