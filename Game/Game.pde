@@ -22,7 +22,6 @@ void setup() {
 
 
 
-
   savedTime= millis();
   
   size(1000, 650);
@@ -70,6 +69,7 @@ void createLevel(){
   
   
 while (i<platforms.length){
+<<<<<<< HEAD
 
   randomSeed(i);
   platforms[i]= new Platform(700+ (i*150) + (int)random(50),600-(i*50) - (int)random(10),80 + (int)random(50),40);
@@ -77,6 +77,17 @@ while (i<platforms.length){
 
   platforms[i]= new Platform(700+ (i*150) + (int)random(50),600-(i*50) - (int)random(10),80 + (int)random(50),30);
 
+=======
+  /*
+<<<<<<< HEAD
+  randomSeed(i);
+  platforms[i]= new Platform(700+ (i*150) + (int)random(50),600-(i*50) - (int)random(10),80 + (int)random(50),40);
+  
+=======
+*/
+  platforms[i]= new Platform(700+ (i*150) + (int)random(50),600-(i*50) - (int)random(10),80 + (int)random(50),30);
+//>>>>>>> 23e17518598095377f2b807c3f92e634fda35d19
+>>>>>>> 45d7fcfbcee199ddca71b2828e0b31bffca7a0fd
   i++;
   if(i<10){
      platforms[i]= new Platform(400+(int)(random(-100,100)), 300 +(int)(random(-410,400)), 80, 40);
@@ -96,6 +107,10 @@ checks.add( new Check(platforms[4].locX + 25, platforms[4].locY - 15));
 
 void draw() {
 // if (keyPressed ){
+  
+  
+  
+    
   int passedTime=millis()-savedTime;
   if (passedTime>totalTime){
       time ++;
@@ -114,6 +129,9 @@ void draw() {
   }
       playerMove();
       background(204,255,255);
+      textSize(100);
+      text("HI WALEY", 200,200);
+      text(time, 400,400);
       for (Platform platform: platforms){
       platform.display(p.locX, p.locY, dir);
       }
