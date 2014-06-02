@@ -22,7 +22,6 @@ void setup() {
 
 
 
-
   savedTime= millis();
   
   size(1000, 650);
@@ -98,6 +97,10 @@ checks.add( new Check(platforms[4].locX + 25, platforms[4].locY - 15));
 
 void draw() {
 // if (keyPressed ){
+  
+  
+  
+    
   int passedTime=millis()-savedTime;
   if (passedTime>totalTime){
       time ++;
@@ -116,6 +119,9 @@ void draw() {
   }
       playerMove();
       background(204,255,255);
+      textSize(100);
+      text("HI WALEY", 200,200);
+      text(time, 400,400);
       for (Platform platform: platforms){
       platform.display(p.locX, p.locY, dir);
       }
