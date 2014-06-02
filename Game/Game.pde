@@ -80,7 +80,7 @@ while (i<platforms.length){
 
 
   platforms[i]= new Platform(700+ (i*150) + (int)random(50),600-(i*50) - (int)random(10),80 + (int)random(50),30);
-  if (random(50)>25&& i >10){
+  if (random(50)>25&& i <10){
       checks.add(new Check(platforms[i].getLocX()+10,platforms[i].getLocY()-50));
   }
   i++;
