@@ -1,7 +1,7 @@
 
 
 
- Platform[] platforms = new Platform[20];
+ ArrayList<Platform> platforms = new ArrayList<Platform>();
 //Platform a = new Platform(200, 200, 40, 15);
 //Platform b = new Platform(800, 400, 80, 15);
 ArrayList<Check> checks = new ArrayList<Check>();
@@ -36,6 +36,8 @@ void setup() {
 //new Platform(1200, 400, 100, 30)
 
   //randomSeed(0);  
+  
+  /*
 int i = 0;
 while (i<platforms.length){
    //randomSeed(i);
@@ -47,7 +49,7 @@ while (i<platforms.length){
   i++;
 }
 
-
+*/
 
   createLevel();
 
@@ -65,19 +67,43 @@ while (i<platforms.length){
 }
 
 void createLevel(){
-  int i = 0; 
-   
-  
-  
-while (i<platforms.length){
-
-
-  //randomSeed(i);
-  //platforms[i]= new Platform(700+ (i*150) + (int)random(50),600-(i*50) - (int)random(10),80 + (int)random(50),40);
   
 
-  //platforms[i]= new Platform(700+ (i*150) + (int)random(50),600-(i*50) - (int)random(10),80 + (int)random(50),30);
+  int i = 0;
+  int dist = 500;
+  int inc = 250;
+  int rand = 0;
+  int width = 0;
+  
+  int height = 0;
+  while (i < 5){
+    rand = (int)random(300);
+    height = (int)random(50)+10;
+    width = (int)random(250)+50;
+    platforms.add(new Platform(dist+inc+rand, 550 - height - 30, width, 30));
+    i++;
+    dist = dist+inc+rand;
+  }
+  
+ ArrayList<Platform> addPlatforms = new ArrayList<Platform>();
+  for (Platform platform: platforms){
+    if (random(100) > 50){
+     
+     addPlatforms.add(new Platform(platform.locX + (int)random(50)-25, 550 - platform.locY - 30 - 150, 100, 30));
+           
+    }
+  }
+  for (Platform platform: addPlatforms){
+    platforms.add(platform);
+  }
+  
+platforms.add(new Platform(platforms.get(0).locX , 550 - platforms.get(0).locY - 30 - 150, 100, 30));
 
+/*
+
+
+while i < platform length
+OLD PLATFORM STEPS
 
   platforms[i]= new Platform(700+ (i*150) + (int)random(50),600-(i*50) - (int)random(10),80 + (int)random(50),30);
   if (random(50)>25&& i <10){
@@ -92,8 +118,9 @@ while (i<platforms.length){
 checks.add( new Check(1000, 565));
 checks.add( new Check(2000, 565));
 checks.add( new Check(platforms[4].locX + 25, platforms[4].locY - 15));
-//platforms[1] = new Platform (1000,400, 60, 100);
- 
+
+
+*/
   
   
   

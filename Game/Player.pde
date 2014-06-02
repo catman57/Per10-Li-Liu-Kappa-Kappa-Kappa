@@ -16,7 +16,7 @@ int needToFall = 0;
 int edgeLeft;
 int edgeRight;
   
-void display(Platform[] platforms){
+void display(ArrayList<Platform> platforms){
   offEdge(platforms);
   land(platforms);
   
@@ -27,7 +27,7 @@ void display(Platform[] platforms){
   
 }
 
-void offEdge(Platform[] platforms){
+void offEdge(ArrayList<Platform>  platforms){
   if (locX + 525 - 25 < edgeLeft || locX + 525 > edgeRight){
     isJumping = true;
   }
@@ -35,7 +35,7 @@ void offEdge(Platform[] platforms){
   
 }
 
-void land(Platform[] platforms){
+void land(ArrayList<Platform> platforms){
    // println(yVel);
     if (isJumping){
       yVel += gravity;
@@ -80,7 +80,7 @@ void land(Platform[] platforms){
   
 }
 
-boolean landed(Platform[] platforms, int yVel, int dir){   //if dir==1, for falling; if dir==0, for checking if hit the bottom of a platform
+boolean landed(ArrayList<Platform> platforms, int yVel, int dir){   //if dir==1, for falling; if dir==0, for checking if hit the bottom of a platform
   for (Platform platform : platforms){
     if (platform.intersects(locX, y + 30*dir + yVel)
        || platform.intersects(locX - 25, y + 30*dir + yVel) ){   //If either edge of player is on the platform
