@@ -72,15 +72,17 @@ void createLevel(){
 while (i<platforms.length){
 
 
-  randomSeed(i);
-  platforms[i]= new Platform(700+ (i*150) + (int)random(50),600-(i*50) - (int)random(10),80 + (int)random(50),40);
+  //randomSeed(i);
+  //platforms[i]= new Platform(700+ (i*150) + (int)random(50),600-(i*50) - (int)random(10),80 + (int)random(50),40);
   
 
-  platforms[i]= new Platform(700+ (i*150) + (int)random(50),600-(i*50) - (int)random(10),80 + (int)random(50),30);
+  //platforms[i]= new Platform(700+ (i*150) + (int)random(50),600-(i*50) - (int)random(10),80 + (int)random(50),30);
 
 
   platforms[i]= new Platform(700+ (i*150) + (int)random(50),600-(i*50) - (int)random(10),80 + (int)random(50),30);
-
+  if (random(50)>25&& i >10){
+      checks.add(new Check(platforms[i].getLocX()+10,platforms[i].getLocY()-50));
+  }
   i++;
   if(i<10){
      platforms[i]= new Platform(400+(int)(random(-100,100)), 300 +(int)(random(-410,400)), 80, 40);
@@ -118,6 +120,7 @@ void draw() {
   if (time == 20){//20 seconds for testing purposes. change at will. if you change this, change statement above to changed time -10 secs. 
     time = 0;
     println("YOU HAVE LOST");
+    coins = 0;
     setup();
   }
       
@@ -128,6 +131,7 @@ void draw() {
       text(20-time,250,250);
       text(coins,100,200);
       for (Platform platform: platforms){
+        
       platform.display(p.locX, p.locY, dir);
       }
    
