@@ -70,13 +70,13 @@ void createLevel(){
   
   
 while (i<platforms.length){
-<<<<<<< HEAD
+
   randomSeed(i);
   platforms[i]= new Platform(700+ (i*150) + (int)random(50),600-(i*50) - (int)random(10),80 + (int)random(50),40);
   
-=======
+
   platforms[i]= new Platform(700+ (i*150) + (int)random(50),600-(i*50) - (int)random(10),80 + (int)random(50),30);
->>>>>>> 23e17518598095377f2b807c3f92e634fda35d19
+
   i++;
   if(i<10){
      platforms[i]= new Platform(400+(int)(random(-100,100)), 300 +(int)(random(-410,400)), 80, 40);
