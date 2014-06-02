@@ -15,15 +15,19 @@ int dir = 0;  // Direction: 1 for right, -1 for left, 0 for stopped
 boolean a = false;
 boolean d = false;
 boolean w = false;
-
+int savedTime;
+int totalTime=1000;//1 second
+int time = 0;//seconds right now
 void setup() {
 
 
 
 
-
+  savedTime= millis();
+  
   size(1000, 650);
   background(204,255,255);
+  
   fill(0);
   rect(0,580, 1000, 100);
   p = new Player();
@@ -61,13 +65,18 @@ while (i<platforms.length){
 }
 
 void createLevel(){
-   randomSeed(0);  
+  int i = 0; 
+  //randomSeed(0);  
   
   
-int i = 0;
 while (i<platforms.length){
+  randomSeed(i);
   platforms[i]= new Platform(700+ (i*150) + (int)random(50),600-(i*50) - (int)random(10),80 + (int)random(50),40);
+  
   i++;
+  if(i<10){
+     platforms[i]= new Platform(400+(int)(random(-100,100)), 300 +(int)(random(-410,400)), 80, 40);
+  }
 }
 
 checks.add( new Check(1000, 565));
@@ -83,7 +92,22 @@ checks.add( new Check(platforms[4].locX + 25, platforms[4].locY - 15));
 
 void draw() {
 // if (keyPressed ){
-  
+  int passedTime=millis()-savedTime;
+  if (passedTime>totalTime){
+      time ++;
+      savedTime=millis();
+  }
+ 
+  if(time>10){
+    print("YOU HAVE ");
+    print(20-time);
+    println(" SECONDS LEFT");
+  }  
+  if (time == 20){//20 seconds for testing purposes. change at will. if you change this, change statement above to changed time -10 secs. 
+    time = 0;
+    println("YOU HAVE LOST");
+    setup();
+  }
       playerMove();
       background(204,255,255);
       for (Platform platform: platforms){
@@ -102,6 +126,7 @@ void draw() {
       }
       if (checks.isEmpty() && finish.intersects(p.locX, p.y)){
         println("You win."); 
+        time = 0;
         setup();
       }
       
