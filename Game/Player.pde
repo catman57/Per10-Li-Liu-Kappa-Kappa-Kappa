@@ -108,7 +108,7 @@ void jump(){
   if (!isJumping){
     isJumping = true;
     isLanding = false;
-    yVel -= 20;
+    yVel -= 15;
   }
 }
   
