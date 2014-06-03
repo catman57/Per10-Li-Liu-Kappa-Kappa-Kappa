@@ -71,56 +71,57 @@ void createLevel(){
   platforms.clear();
   int i = 0;
   int dist = 500;
-  int inc = 250;
+  int inc = 300;
   int rand = 0;
   int width = 0;
   
   int height = 0;
+  
+  
+  int shift = 0;
+  int shifted = 0;
   while (i < 5){
     rand = (int)random(300);
-    height = (int)random(50)+10;
-    width = (int)random(250)+50;
+    height = (int)random(85)+15;
+    width = (int)random(300)+50;
     platforms.add(new Platform(dist+inc+rand, 550 - height - 30, width, 40));
     i++;
     dist = dist+inc+rand;
   }
   
  ArrayList<Platform> addPlatforms = new ArrayList<Platform>();
-  for (Platform platform: platforms){
-    if (random(100) > 50){
+  for (Platform platform: platforms){                     ///meh
+    if (random(100) < 30){
+    // shift = (int)random(100) + 25;
+    // width = (int)random(300) + 50;
+    // shifted = shifted + shift + width;
+     addPlatforms.add(new Platform(platform.locX + (int)random(300)-150, platform.locY - 90 - (int)random(80), (int)random(300)+75 , 40));
      
-     addPlatforms.add(new Platform(platform.locX + (int)random(50)-25, 550 - platform.locY - 30 - 150, 100, 30));
            
     }
   }
   for (Platform platform: addPlatforms){
     platforms.add(platform);
   }
+    
+  for (Platform platform: platforms){
+        if (random(100) < 60){
+    // shift = (int)random(100) + 25;
+    // width = (int)random(300) + 50;
+    // shifted = shifted + shift + width;
+     addPlatforms.add(new Platform(platform.locX + (int)random(300)-150, platform.locY - 90 - (int)random(80), (int)random(300)+75 , 40));
+     
+           
+    }
+  }
+  addPlatforms.clear();
+  for (Platform platform: addPlatforms){
+    platforms.add(platform);
+  }
+    
+    
   
-platforms.add(new Platform(platforms.get(0).locX , 550 - platforms.get(0).locY - 30 - 150, 100, 30));
 
-/*
-
-
-while i < platform length
-OLD PLATFORM STEPS
-
-  platforms[i]= new Platform(700+ (i*150) + (int)random(50),600-(i*50) - (int)random(10),80 + (int)random(50),30);
-  if (random(50)>25&& i <10){
-      checks.add(new Check(platforms[i].getLocX()+10,platforms[i].getLocY()-50));
-  }
-  i++;
-  if(i<10){
-     platforms[i]= new Platform(400+(int)(random(-100,100)), 300 +(int)(random(-410,400)), 80, 40);
-  }
-}
-
-checks.add( new Check(1000, 565));
-checks.add( new Check(2000, 565));
-checks.add( new Check(platforms[4].locX + 25, platforms[4].locY - 15));
-
-
-*/
   
   
   
