@@ -68,7 +68,7 @@ while (i<platforms.length){
 
 void createLevel(){
   
-
+  platforms.clear();
   int i = 0;
   int dist = 500;
   int inc = 250;
@@ -80,7 +80,7 @@ void createLevel(){
     rand = (int)random(300);
     height = (int)random(50)+10;
     width = (int)random(250)+50;
-    platforms.add(new Platform(dist+inc+rand, 550 - height - 30, width, 30));
+    platforms.add(new Platform(dist+inc+rand, 550 - height - 30, width, 40));
     i++;
     dist = dist+inc+rand;
   }
