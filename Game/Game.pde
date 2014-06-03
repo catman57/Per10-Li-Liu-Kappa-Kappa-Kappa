@@ -5,8 +5,8 @@
 //Platform a = new Platform(200, 200, 40, 15);
 //Platform b = new Platform(800, 400, 80, 15);
 ArrayList<Check> checks = new ArrayList<Check>();
+ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 Finish finish = new Finish(2500, 565);
-//Check[] checks = new Check[1];
 
 Player p;
 
@@ -63,12 +63,18 @@ while (i<platforms.length){
   check.display(p.locX, p.locY);
   }
   finish.display(p.locX, p.locY);
+  for (Enemy enemy: enemies){
+   enemy.display(p.locX, p.locY); 
+    
+  }
+  
 
 }
 
 void createLevel(){
   
   platforms.clear();
+  enemies.clear();
   int i = 0;
   int dist = 500;
   int inc = 300;
@@ -120,7 +126,8 @@ void createLevel(){
   }
     
     
-  
+  enemies.add(new Enemy(platforms.get(0)));
+
 
   
   
@@ -158,33 +165,14 @@ void draw() {
       text("DEATH APPROACHES ", 200,200);
       text(20-time,250,250);
       text(coins,100,200);
-      for (Platform platform: platforms){
-        
-      platform.display(p.locX, p.locY, dir);
-      }
+
    
    
-     ArrayList<Check> toRemove = new ArrayList<Check>();
-      for (Check check: checks){
-        check.display(p.locX, p.locY, dir);
-        
-        if (check.intersects(p.locX, p.y)){
-          println("fsd");
-          coins ++;
-         toRemove.add(check); 
-        }
-      }
-      if (checks.isEmpty() && finish.intersects(p.locX, p.y)){
-        println("You win."); 
-        time = 0;
-        println(coins);
-        coins= 0;
-        setup();
-      }
-      
-      
-      finish.display(p.locX, p.locY, dir);
-      checks.removeAll(toRemove);
+      displayChecks();
+      displayPlatforms();
+      displayEnemies();
+   
+
       p.display(platforms);   
       fill(0);
       rect(0,580, 1000, 100);
@@ -228,7 +216,49 @@ boolean doesNotCollide(int shift){    //shift moves the coordinate that is check
     
     
   
+void displayPlatforms(){
+      for (Platform platform: platforms){
+        
+      platform.display(p.locX, p.locY, dir);
+      }
+
+}
+
+
+void displayChecks(){
+       ArrayList<Check> toRemove = new ArrayList<Check>();
+      for (Check check: checks){
+        check.display(p.locX, p.locY, dir);
+        
+        if (check.intersects(p.locX, p.y)){
+          println("fsd");
+          coins ++;
+         toRemove.add(check); 
+        }
+      }
+      if (checks.isEmpty() && finish.intersects(p.locX, p.y)){
+        println("You win."); 
+        time = 0;
+        println(coins);
+        coins= 0;
+        setup();
+      }
+      
+      
+      finish.display(p.locX, p.locY, dir);
+      checks.removeAll(toRemove);
   
+}
+
+
+void displayEnemies(){
+       for (Enemy enemy: enemies){
+       
+      enemy.display(p.locX, p.locY); 
+       
+     }
+  
+}
   
 
 
