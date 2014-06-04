@@ -253,8 +253,14 @@ void displayChecks(){
 
 void displayEnemies(){
        for (Enemy enemy: enemies){
-       
-      enemy.display(p.locX, p.locY); 
+             enemy.display(p.locX, p.locY); 
+             if (enemy.intersects(p)){
+               println("DIE!!!!!!!!!");
+             }
+             else{
+               println("not die...");
+               
+             }
        
      }
   

@@ -19,7 +19,11 @@ public class Enemy{
   }
     
     
+  boolean intersects(Player p){
+      return ( pow((p.locX + 525 - 12 -locX),2) + pow((p.y + 15 -locY), 2) <= pow(25,2));
    
+   
+  } 
   
   
   
