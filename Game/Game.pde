@@ -31,25 +31,7 @@ void setup() {
   fill(0);
   rect(0,580, 1000, 100);
   p = new Player();
-//{new Platform(200, 400, 80, 30), 
-//new Platform(800, 200, 120, 30),
-//new Platform(1200, 400, 100, 30)
 
-  //randomSeed(0);  
-  
-  /*
-int i = 0;
-while (i<platforms.length){
-   //randomSeed(i);
-   if(i<10){
-  platforms[i]= new Platform(700+ (i*(int)(random(-50,50))),550-(i*50),60,40);
-   }else if(i<20){
-  platforms[i]= new Platform(700+(i*50),600-(i*50),60,40); 
-   }
-  i++;
-}
-
-*/
 
   createLevel();
 
@@ -96,7 +78,14 @@ void createLevel(){
   }
   
  ArrayList<Platform> addPlatforms = new ArrayList<Platform>();
-  for (Platform platform: platforms){                     ///meh
+  for (Platform platform: platforms){  
+    if (random(100) < 50){
+      
+      enemies.add(new Enemy(platform));
+      
+    }
+
+    ///meh
     if (random(100) < 30){
     // shift = (int)random(100) + 25;
     // width = (int)random(300) + 50;
@@ -147,11 +136,7 @@ void draw() {
       savedTime=millis();
   }
  
-  if(time>10){
-    print("YOU HAVE ");
-    print(20-time);
-    println(" SECONDS LEFT");
-  }  
+
   if (time == 20){//20 seconds for testing purposes. change at will. if you change this, change statement above to changed time -10 secs. 
     time = 0;
     println("YOU HAVE LOST");
@@ -228,7 +213,7 @@ void displayPlatforms(){
 void displayChecks(){
        ArrayList<Check> toRemove = new ArrayList<Check>();
       for (Check check: checks){
-        check.display(p.locX, p.locY, dir);
+        check.display(p.locX, p.locY , dir);
         
         if (check.intersects(p.locX, p.y)){
           println("fsd");
