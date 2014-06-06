@@ -11,6 +11,7 @@ int yVel = 0;
 int gravity = 1;
 boolean isJumping = false;
 boolean isLanding = false;
+boolean secondJump = false;
 int needToFall = 0;
 
 int edgeLeft;
@@ -46,7 +47,10 @@ void offEdge(ArrayList<Platform>  platforms){
 void land(ArrayList<Platform> platforms){
    // println(yVel);
     if (isJumping){
-      yVel += gravity;
+    
+    yVel += gravity;
+      
+      
       //y += yVel;
 
       if (!isLanding && landed(platforms, yVel, 0)){
@@ -62,6 +66,7 @@ void land(ArrayList<Platform> platforms){
         
         isJumping = false;
         isLanding = false;
+        
         yVel = 0;
         y += needToFall;
         println("fall stop");
@@ -113,11 +118,24 @@ boolean landed(ArrayList<Platform> platforms, int yVel, int dir){   //if dir==1,
 
 
 void jump(){
-  if (!isJumping){
+  
+  if (!isJumping ){
     isJumping = true;
     isLanding = false;
-    yVel -= 20;
+    secondJump = true;
+    yVel -= 15;
+    println("jump");
   }
+  else if (isJumping && secondJump ){
+      yVel -= 15;
+      gravity = 1;
+      secondJump = false;
+      
+      println("jump222");
+    
+  }
+  
+  
 }
   
 

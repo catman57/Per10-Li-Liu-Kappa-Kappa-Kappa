@@ -14,7 +14,7 @@ int dir = 0;  // Direction: 1 for right, -1 for left, 0 for stopped
 
 boolean a = false;
 boolean d = false;
-boolean w = false;
+//boolean w = false;
 int savedTime;
 int totalTime=1000;//1 second
 int time = 0;//seconds right now
@@ -193,21 +193,11 @@ void playerMove(){
      if (a & doesNotCollide(-1)){
         dir = 1;
         p.locX -= 5;
-        //img= loadImage("nyancat.png");
       }
       else if (d & doesNotCollide(0)){
         
         dir = -1;
         p.locX += 5;
-        //img=loadImage("nyanleft.png");
-      }
-      if (w){
-        p.jump();
-      }
-      if(a){
-        //img=loadImage("nyanleft.png");
-      }else{
-        //img=loadImage("nyancat.png");
       }
         
        
@@ -269,10 +259,10 @@ void displayEnemies(){
        for (Enemy enemy: enemies){
              enemy.display(p.locX, p.locY); 
              if (enemy.intersects(p)){
-               println("DIE!!!!!!!!!");
+              // println("DIE!!!!!!!!!");
              }
              else{
-               println("not die...");
+           //    println("not die...");
                
              }
        
@@ -292,7 +282,8 @@ void keyPressed(){
    d = true;
  }
  if (key == 'w'){
-   w = true;
+   //w = true;
+   p.jump();
  }
  
 } 
@@ -306,9 +297,9 @@ void keyReleased(){
  }
  if (key == 'd'){
    d = false;
- }
+ }/*
  if (key == 'w'){
    w = false;
- }
+ }*/
 }
 
