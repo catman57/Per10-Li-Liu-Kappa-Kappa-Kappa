@@ -20,6 +20,12 @@ int totalTime=1000;//1 second
 int time = 0;//seconds right now
 int coins= 0;
 
+
+
+int  safeTime;
+boolean attacked = false;
+int lives = 3;
+
 void setup() {
 
 
@@ -65,6 +71,7 @@ void createLevel(){
   
   platforms.clear();
   enemies.clear();
+  checks.clear();
   int i = 0;
 //  int dist = 500;
 //  int inc = 300;
@@ -99,11 +106,8 @@ void createLevel(){
   
  ArrayList<Platform> addPlatforms = new ArrayList<Platform>();
   for (Platform platform: platforms){  
-    if (random(100) < 10){
-      
-      enemies.add(new Enemy(platform));
-      
-    }
+    if (random(100) < 25)     enemies.add(new Enemy(platform)); 
+    if (random(100) < 50)     checks.add(new Check(platform));
   }
     /*
 
@@ -137,7 +141,7 @@ void createLevel(){
   }
   
   */
-  checks.add(new Check(platforms.get(0)));
+
   
   
   
@@ -172,6 +176,7 @@ void draw() {
       text("DEATH APPROACHES ", 200,200);
       text(20-time,250,250);
       text(coins,100,200);
+      text(lives,100,125);
 
    
    
@@ -258,14 +263,22 @@ void displayChecks(){
 void displayEnemies(){
        for (Enemy enemy: enemies){
              enemy.display(p.locX, p.locY); 
-             if (enemy.intersects(p)){
-              // println("DIE!!!!!!!!!");
-             }
-             else{
-           //    println("not die...");
-               
-             }
-       
+             if (!attacked && enemy.intersects(p)){
+                lives--;
+                safeTime = millis();
+                attacked = true;
+                break;
+             }       
+     }
+     if (lives == 0){
+       setup();
+       attacked = false;
+       lives = 3;
+     }
+     else if (lives != 3){
+       if (millis() - 1500 > safeTime){
+         attacked = false;
+     }
      }
   
 }
