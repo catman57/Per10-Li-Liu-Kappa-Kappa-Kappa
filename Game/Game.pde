@@ -7,7 +7,7 @@
 ArrayList<Check> checks = new ArrayList<Check>();
 ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 Finish finish = new Finish(2500, 565);
-
+PImage img;
 Player p;
 
 int dir = 0;  // Direction: 1 for right, -1 for left, 0 for stopped
@@ -22,10 +22,11 @@ int coins= 0;
 void setup() {
 
 
-
+  
   savedTime= millis();
   
   size(1000, 650);
+  
   background(204,255,255);
   
   fill(0);
@@ -50,7 +51,7 @@ void setup() {
     
   }
   
-
+//img= loadImage("nyancat.png");
 }
 
 void createLevel(){
@@ -162,7 +163,7 @@ void draw() {
       fill(0);
       rect(0,580, 1000, 100);
       
-  
+  image(img,p.x,p.y);
   //}
   
 }
@@ -171,14 +172,21 @@ void playerMove(){
      if (a & doesNotCollide(-1)){
         dir = 1;
         p.locX -= 5;
+        //img= loadImage("nyancat.png");
       }
       else if (d & doesNotCollide(0)){
         
         dir = -1;
         p.locX += 5;
+        img=loadImage("nyanleft.png");
       }
       if (w){
         p.jump();
+      }
+      if(a){
+        img=loadImage("nyanleft.png");
+      }else{
+        img=loadImage("nyancat.png");
       }
         
        
