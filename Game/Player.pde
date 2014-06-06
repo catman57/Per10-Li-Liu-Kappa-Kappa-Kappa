@@ -2,7 +2,7 @@ class Player{
 
 //location as seen on screen, usually stationary
 int x = 500;  
-int y = 550;  
+int y = 0;  
 //location relative to the map
 int locX = 25;
 int locY = 100;
@@ -62,14 +62,14 @@ void land(ArrayList<Platform> platforms){
        y += yVel; 
       }
     
-    
+    /*
            if (y + yVel>= 550){
             yVel = 0;
            y += (580-(y+30));
             isJumping = false;
             isLanding = false;
       }
-    
+    */
       
       if (yVel >= 0){
         isLanding = true;

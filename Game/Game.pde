@@ -19,6 +19,7 @@ int savedTime;
 int totalTime=1000;//1 second
 int time = 0;//seconds right now
 int coins= 0;
+
 void setup() {
 
 
@@ -41,7 +42,6 @@ void setup() {
   for (Platform platform: platforms){
     platform.display(p.locX, p.locY);
   }
-  //a.display(p.locX, p.locY);
   for (Check check: checks){
   check.display(p.locX, p.locY);
   }
@@ -56,35 +56,56 @@ void setup() {
 
 void createLevel(){
   
+  
+  fill(0);
+  //rect(0,580, 1000, 100);
+  p = new Player();
+
+  
+  
   platforms.clear();
   enemies.clear();
   int i = 0;
-  int dist = 500;
-  int inc = 300;
-  int rand = 0;
-  int width = 0;
+//  int dist = 500;
+//  int inc = 300;
+  //int rand = 0;
+//  int width = 0;
   
-  int height = 0;
+  //int height = 0;
   
   
+  int leapDist = 50;
+  
+  /*
   int shift = 0;
   int shifted = 0;
-  while (i < 5){
-    rand = (int)random(300);
-    height = (int)random(85)+15;
-    width = (int)random(300)+50;
-    platforms.add(new Platform(dist+inc+rand, 550 - height - 30, width, 40));
+  */
+  
+  platforms.add(new Platform(500, 400, 100, 40));
+  
+  while (i < 10){
+   // rand = 0;// (int)random(300);
+ //   height = (int)random(85)+15;
+    Platform previous = platforms.get(i);
+    int newLocX = previous.locX + previous.width + (int)random(150) + 50;
+    int newLocY =  platforms.get(i).locY + (int)random(150) - 75;
+    if (random(100) < 25){
+      newLocY = 400 + (int)random(210);
+    }
+    platforms.add(new Platform(newLocX, newLocY, (int)random(250) + 50, 40));
     i++;
-    dist = dist+inc+rand;
+   // dist = dist+inc+rand;
   }
   
  ArrayList<Platform> addPlatforms = new ArrayList<Platform>();
   for (Platform platform: platforms){  
-    if (random(100) < 50){
+    if (random(100) < 10){
       
       enemies.add(new Enemy(platform));
       
     }
+  }
+    /*
 
     ///meh
     if (random(100) < 30){
@@ -114,11 +135,9 @@ void createLevel(){
   for (Platform platform: addPlatforms){
     platforms.add(platform);
   }
-    
-    
-  enemies.add(new Enemy(platforms.get(0)));
-
-
+  
+  */
+  checks.add(new Check(platforms.get(0)));
   
   
   
@@ -128,7 +147,9 @@ void createLevel(){
 void draw() {
 // if (keyPressed ){
   
-  
+  if (p.y > 650){
+    setup();
+  }
   
     
   int passedTime=millis()-savedTime;
@@ -161,7 +182,7 @@ void draw() {
 
       p.display(platforms);   
       fill(0);
-      rect(0,580, 1000, 100);
+      //rect(0,580, 1000, 100);
       
   image(img,p.x,p.y);
   //}
