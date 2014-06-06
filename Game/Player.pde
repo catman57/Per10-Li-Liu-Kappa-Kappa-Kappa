@@ -15,6 +15,8 @@ int needToFall = 0;
 
 int edgeLeft;
 int edgeRight;
+
+PImage img;
   
 void display(ArrayList<Platform> platforms){
   offEdge(platforms);
@@ -23,7 +25,13 @@ void display(ArrayList<Platform> platforms){
   noStroke();
   fill(255,0,0);
  // rect(x, y, 25, 30);
-  
+ if (dir == 1){
+   img = loadImage("nyanleft.png");
+ }
+ else{
+   img = loadImage("nyancat.png");
+ }
+ image(img,x, y);
   
 }
 

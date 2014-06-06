@@ -184,7 +184,7 @@ void draw() {
       fill(0);
       //rect(0,580, 1000, 100);
       
-  image(img,p.x,p.y);
+  //image(img,p.x,p.y);
   //}
   
 }
@@ -199,15 +199,15 @@ void playerMove(){
         
         dir = -1;
         p.locX += 5;
-        img=loadImage("nyanleft.png");
+        //img=loadImage("nyanleft.png");
       }
       if (w){
         p.jump();
       }
       if(a){
-        img=loadImage("nyanleft.png");
+        //img=loadImage("nyanleft.png");
       }else{
-        img=loadImage("nyancat.png");
+        //img=loadImage("nyancat.png");
       }
         
        
