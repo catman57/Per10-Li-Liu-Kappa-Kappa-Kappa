@@ -1,9 +1,7 @@
 
 
 
- ArrayList<Platform> platforms = new ArrayList<Platform>();
-//Platform a = new Platform(200, 200, 40, 15);
-//Platform b = new Platform(800, 400, 80, 15);
+ArrayList<Platform> platforms = new ArrayList<Platform>();
 ArrayList<Check> checks = new ArrayList<Check>();
 ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 Finish finish;
@@ -14,7 +12,7 @@ int dir = 0;  // Direction: 1 for right, -1 for left, 0 for stopped
 
 boolean a = false;
 boolean d = false;
-//boolean w = false;
+
 int savedTime;
 int totalTime=1000;//1 second
 int time = 0;//seconds right now
@@ -68,11 +66,13 @@ void createLevel(){
   p = new Player();
 
   
-  
+  time = 0;
   platforms.clear();
   enemies.clear();
   checks.clear();
+  attacked = false;
   lives = 3;
+  coins = 0;
   int i = 0;
 //  int dist = 500;
 //  int inc = 300;
@@ -96,10 +96,26 @@ void createLevel(){
  //   height = (int)random(85)+15;
     Platform previous = platforms.get(i);
     int newLocX = previous.locX + previous.width + (int)random(150) + 50;
-    int newLocY =  platforms.get(i).locY + (int)random(150) - 75;
+    int newLocY;
+    int oldLocY = platforms.get(i).locY;
+    if (oldLocY < 100){
+      
+       newLocY =  oldLocY + (int)random(150);
+    }
+    else if (oldLocY > 500){
+       newLocY = oldLocY - (int)random(100);
+    }
+    else{
+       newLocY = oldLocY + (int)random(150) - 75; 
+    }
+    
+    /*
     if (random(100) < 25){
       newLocY = 400 + (int)random(210);
     }
+    
+    */
+    
     platforms.add(new Platform(newLocX, newLocY, (int)random(250) + 75, 40));
     i++;
    // dist = dist+inc+rand;
@@ -114,6 +130,9 @@ void createLevel(){
     i++;
   }
   finish = new Finish(platforms.get(platforms.size()-1));
+  enemies.add(new Waley(0, platforms));
+  
+  
     /*
 
     ///meh
@@ -126,16 +145,16 @@ void createLevel(){
            
     }
   }
-  for (Platform platform: addPlatforms){
+  for (Platform platfowrm: addPlatforms){
     platforms.add(platform);
   }
+  
+  */
     
   for (Platform platform: platforms){
-        if (random(100) < 60){
-    // shift = (int)random(100) + 25;
-    // width = (int)random(300) + 50;
-    // shifted = shifted + shift + width;
-     addPlatforms.add(new Platform(platform.locX + (int)random(300)-150, platform.locY - 90 - (int)random(80), (int)random(300)+75 , 40));
+        if (random(100) < 50){
+   
+     addPlatforms.add(new Platform(platform.locX - (int)random(100), platform.locY - 90 - (int)random(80), (int)random(300)+75 , 40));
      
            
     }
@@ -145,7 +164,7 @@ void createLevel(){
     platforms.add(platform);
   }
   
-  */
+  
 
   
   
@@ -168,10 +187,9 @@ void draw() {
   }
  
 
-  if (time == 20){//20 seconds for testing purposes. change at will. if you change this, change statement above to changed time -10 secs. 
-    time = 0;
+  if (time == 40){//20 seconds for testing purposes. change at will. if you change this, change statement above to changed time -10 secs. 
+    
     println("YOU HAVE LOST");
-    coins = 0;
     setup();
   }
       
@@ -272,12 +290,11 @@ void displayEnemies(){
                 lives--;
                 safeTime = millis();
                 attacked = true;
-                break;
+                //break;
              }       
      }
      if (lives == 0){
        setup();
-       attacked = false;
        
      }
      else if (lives != 3){
