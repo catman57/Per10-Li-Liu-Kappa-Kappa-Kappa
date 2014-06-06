@@ -22,7 +22,7 @@ void display(ArrayList<Platform> platforms){
   
   noStroke();
   fill(255,0,0);
-  rect(x, y, 25, 30);
+ // rect(x, y, 25, 30);
   
   
 }

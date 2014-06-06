@@ -31,7 +31,7 @@ void setup() {
   background(204,255,255);
   
   fill(0);
-  rect(0,580, 1000, 100);
+  //rect(0,580, 1000, 100);
   p = new Player();
 
 
