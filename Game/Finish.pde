@@ -7,6 +7,9 @@ class Finish extends Goal{
  }
  
   
+     Finish(Platform platform){
+       super(platform);
+ }
  
  void display(int pX, int pY){
    fill(204, 153, 0);

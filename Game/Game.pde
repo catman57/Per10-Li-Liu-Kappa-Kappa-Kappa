@@ -6,7 +6,7 @@
 //Platform b = new Platform(800, 400, 80, 15);
 ArrayList<Check> checks = new ArrayList<Check>();
 ArrayList<Enemy> enemies = new ArrayList<Enemy>();
-Finish finish = new Finish(2500, 565);
+Finish finish;
 PImage img;
 Player p;
 
@@ -72,6 +72,7 @@ void createLevel(){
   platforms.clear();
   enemies.clear();
   checks.clear();
+  lives = 3;
   int i = 0;
 //  int dist = 500;
 //  int inc = 300;
@@ -99,16 +100,20 @@ void createLevel(){
     if (random(100) < 25){
       newLocY = 400 + (int)random(210);
     }
-    platforms.add(new Platform(newLocX, newLocY, (int)random(250) + 50, 40));
+    platforms.add(new Platform(newLocX, newLocY, (int)random(250) + 75, 40));
     i++;
    // dist = dist+inc+rand;
   }
   
  ArrayList<Platform> addPlatforms = new ArrayList<Platform>();
-  for (Platform platform: platforms){  
-    if (random(100) < 25)     enemies.add(new Enemy(platform)); 
-    if (random(100) < 50)     checks.add(new Check(platform));
+ i = 1;
+  while (i < platforms.size()){  
+   
+    if (random(100) < 25)     enemies.add(new Enemy(platforms.get(i))); 
+    if (random(100) < 50)     checks.add(new Check(platforms.get(i)));
+    i++;
   }
+  finish = new Finish(platforms.get(platforms.size()-1));
     /*
 
     ///meh
@@ -273,7 +278,7 @@ void displayEnemies(){
      if (lives == 0){
        setup();
        attacked = false;
-       lives = 3;
+       
      }
      else if (lives != 3){
        if (millis() - 1500 > safeTime){

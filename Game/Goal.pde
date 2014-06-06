@@ -8,7 +8,15 @@ class Goal{
     this.locX = locX;
     this.locY = locY;
     
+    
+    
   }
+  
+  
+   Goal(Platform platform){
+     this.locX = platform.locX + (int)random(platform.width + 25) - 25;
+     this.locY = platform.locY - 15 - (int)random(50);
+ }
     
     
     void display(int pX, int pY){

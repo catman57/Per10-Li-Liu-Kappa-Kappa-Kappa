@@ -6,7 +6,7 @@ class Check extends Goal{
  }
  
  Check(Platform platform){
-   super(platform.locX + (int)random(platform.width), platform.locY - 15);
+   super(platform.locX + (int)random(platform.width + 25) - 25, platform.locY - 15 - (int)random(50));
  }
  
  
