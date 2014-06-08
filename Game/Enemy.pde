@@ -2,12 +2,13 @@ public class Enemy{
   
   int locX;
   int locY;
-  
+  int animation1;
+  int animation2;
   int leftBound;
   int rightBound;
   int cur = 1;
   int dir = 1;
-  
+  PImage img;
   Enemy(Platform platform){
     locX = platform.locX + (int)random(platform.width)-30;
     locY = platform.locY - 30;
@@ -21,19 +22,37 @@ public class Enemy{
     
     noStroke();
     fill(70);
-    rect(locX - pX + cur, locY, 25, 30);
+    if (dir==1){
+    img = loadImage("nyanright"+animation1+".png");
+    animation1++;
+      if(animation1>11){
+        animation1=0;
+      }
+    }else{
+      img = loadImage("nyanleft"+animation2+".png");
+      if(animation2>11){
+        animation2=0;
+      }
+    }
+    //rect(locX - pX + cur, locY, 25, 30);
     if (locX + cur  + 30 < rightBound && dir == 1){
-      cur++;}
+      cur++;
+      image(img,locX+cur+30,locY);  
+    }
     if (locX + cur + 30 == rightBound){
        dir = -1; 
+       image(img,locX+cur+30,locY);
     }
     if (locX + cur  == leftBound){
        dir = 1; 
+       image(img,locX+cur,locY);
     }
     if (locX + cur > leftBound && dir == -1){
        cur--; 
+       image(img,locX+cur,locY);
     }
-      
+    
+  
 
     
      
