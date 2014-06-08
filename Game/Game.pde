@@ -1,6 +1,6 @@
-
-
-
+import ddf.minim.*;
+Minim minim;
+AudioPlayer player;
 ArrayList<Platform> platforms = new ArrayList<Platform>();
 ArrayList<Check> checks = new ArrayList<Check>();
 ArrayList<Enemy> enemies = new ArrayList<Enemy>();
@@ -27,7 +27,9 @@ int lives = 3;
 void setup() {
 
 
-  
+  minim= new Minim(this);
+  player= minim.loadFile("nyancat.mp3");
+  player.play(); 
   savedTime= millis();
   
   size(1000, 650);
@@ -89,7 +91,7 @@ void createLevel(){
   int shifted = 0;
   */
   
-  platforms.add(new Platform(500, 400, 100, 25));
+  platforms.add(new Platform(500, 400, 100, 40));
   
   while (i < 10){
    // rand = 0;// (int)random(300);
@@ -116,7 +118,7 @@ void createLevel(){
     
     */
     
-    platforms.add(new Platform(newLocX, newLocY, (int)random(250) + 75, 25));
+    platforms.add(new Platform(newLocX, newLocY, (int)random(250) + 75, 40));
     i++;
    // dist = dist+inc+rand;
   }

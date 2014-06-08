@@ -2,12 +2,12 @@ class Goal{
   
   int locX;
   int locY;
-  
+  PImage img;
   
   Goal(int locX, int locY){
     this.locX = locX;
     this.locY = locY;
-    
+    //img = loadImage("nyanright0.png");
     
     
   }
@@ -20,21 +20,22 @@ class Goal{
     
     
     void display(int pX, int pY){
+    //img= loadImage("nyanright0");
     noStroke();
     //fill(50, 55, 100);
     rect(locX - pX, locY, 20, 20);
-    
+    //image(img,locX,locY);
     
   }
   
   void display(int pX, int pY, int dir){
     
-     
+    //img = loadImage("nyanright0");
     noStroke();
 
     //fill(50, 55, 100);
     ellipse(locX - pX, locY, 25, 25);
-
+  //  image(img,locX-pX,locY);
     
     
   }  

@@ -1,8 +1,12 @@
 class Check extends Goal{
- 
+ PImage img;
+ float random;
  Check(int locX, int locY){
-  super(locX, locY); 
-   
+  super(locX, locY);
+  /*random= random(10); 
+  if(random<3){
+    img= loadImage("drumstick.svg");
+  }*/
  }
  
  Check(Platform platform){
@@ -12,7 +16,7 @@ class Check extends Goal{
  
  void display(int pX, int pY){
    fill(50, 55, 100);
-    super.display(pX, pY);
+   super.display(pX, pY);
     
     
   }
