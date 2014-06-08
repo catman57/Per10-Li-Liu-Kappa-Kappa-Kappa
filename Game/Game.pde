@@ -24,15 +24,28 @@ int  safeTime;
 boolean attacked = false;
 int lives = 3;
 
+
+boolean startedGame = false;
+Button startButton = new Button("Start", 50, 400, 450, 120, 50);
+
 void setup() {
 
 
   minim= new Minim(this);
   player= minim.loadFile("nyancat.mp3");
   player.play(); 
-  savedTime= millis();
   
   size(1000, 650);
+  background(204, 255, 255);
+  
+ 
+
+}
+
+void setupLevel(){
+   savedTime= millis();
+  
+
   
   background(204,255,255);
   
@@ -56,9 +69,9 @@ void setup() {
    enemy.display(p.locX, p.locY); 
     
   }
-  
-//img= loadImage("nyancat.png");
 }
+
+
 
 void createLevel(){
   
@@ -67,7 +80,7 @@ void createLevel(){
   //rect(0,580, 1000, 100);
   p = new Player();
 
-  
+
   time = 0;
   platforms.clear();
   enemies.clear();
@@ -91,7 +104,7 @@ void createLevel(){
   int shifted = 0;
   */
   
-  platforms.add(new Platform(500, 400, 100, 40));
+  platforms.add(new Platform(500, 400, 100, 25));
   
   while (i < 10){
    // rand = 0;// (int)random(300);
@@ -118,7 +131,7 @@ void createLevel(){
     
     */
     
-    platforms.add(new Platform(newLocX, newLocY, (int)random(250) + 75, 40));
+    platforms.add(new Platform(newLocX, newLocY, (int)random(250) + 75, 25));
     i++;
    // dist = dist+inc+rand;
   }
@@ -174,11 +187,27 @@ void createLevel(){
 }
 
 
+void startScreen(){
+    startButton.display();
+    
+    if (mousePressed && startButton.clickedButton(mouseX, mouseY)){
+      startedGame = true;
+      setupLevel();
+    }
+    
+}
+
+
 void draw() {
-// if (keyPressed ){
+  
+  if (!startedGame){
+    startScreen();
+  }
+  else{
+  
   
   if (p.y > 650){
-    setup();
+    setupLevel();
   }
   
     
@@ -192,7 +221,7 @@ void draw() {
   if (time == 40){//20 seconds for testing purposes. change at will. if you change this, change statement above to changed time -10 secs. 
     
     println("YOU HAVE LOST");
-    setup();
+    setupLevel();
   }
       
       playerMove();
@@ -216,6 +245,8 @@ void draw() {
       
   //image(img,p.x,p.y);
   //}
+  
+}
   
 }
 
@@ -275,7 +306,7 @@ void displayChecks(){
         time = 0;
         println(coins);
         coins= 0;
-        setup();
+        setupLevel();
       }
       
       
@@ -295,10 +326,11 @@ void displayEnemies(){
                 attacked = true;
                 //break;
 
-     }
+             }
+       }
     
      if (lives == 0){
-       setup();
+       setupLevel();
        
      }
      else if (lives != 3){
@@ -308,7 +340,7 @@ void displayEnemies(){
      }
   
        }
-}
+
   
 
 
