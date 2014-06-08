@@ -28,9 +28,24 @@ int lives = 3;
 //Start Screen
 Button startButton = new Button("Start", 50, 400, 450, 120, 50);
 boolean startedGame = false;
+boolean restartedGame = true;
 
 //Counters for coins, etc.
 int coins = 0;
+
+//background color
+int ri = 204;//186;
+int gi = 255;//216;
+int bi = 255;
+int rf = 0;
+int gf = 28;
+int bf = 64;
+double r = ri;
+double g = gi;
+double b = bi;
+int divisions = 100;
+int soundInc = 0;
+
 
 void setup() {
 
@@ -38,7 +53,7 @@ void setup() {
   minim= new Minim(this);
   player= minim.loadFile("nyancat.mp3");
   player.play(); 
-  
+  player.setGain(0);
   //background
   size(1000, 650);
   background(204, 255, 255);
@@ -82,7 +97,7 @@ void createLevel(){
   enemies.clear();
   checks.clear();
   attacked = false;
-  lives = 3;
+  //lives = 3;
   coins = 0;
   platforms.add(new Platform(500, 400, 100, 25)); //base starting platform
   
@@ -154,34 +169,64 @@ void startScreen(){
     
 }
 
+void ending(){
+  if (keyPressed){
+    restartedGame = false;
+    startedGame = true;
+    player.setGain(0);
+    lives = 3;
+    setupLevel();
+    
+  }else{
+  background(0); 
+  player.setGain(-100);
+  fill(255);
+  textSize(30);
+  text("Press any button to restart.", 265, 400);
+  }
+}
+
 
 void draw() {
   
   if (!startedGame){
     startScreen();
+    if (!restartedGame){
+      ending();
+    }
   } else{
   
   
   if (p.y > 650){
-    setupLevel();  //gameover if fall
+    
+    restartedGame = false;
+    startedGame = false;
+    //setupLevel();  //gameover if fall
   }
   
     
   //Time
   int passedTime=millis()-savedTime;
   if (passedTime>totalTime){
-      time ++;
+      time++;
       savedTime=millis();
-  }if (time == 40){//20 seconds for testing purposes. change at will. if you change this, change statement above to changed time -10 secs. 
+        if (time > 10){
+          player.setGain(player.getGain() - 2);
+        }
+  }if (time == 30){//20 seconds for testing purposes. change at will. if you change this, change statement above to changed time -10 secs. 
+    
     println("YOU HAVE LOST");
-    setupLevel();  //gameover out of time
+    restartedGame = false;
+    startedGame = false;
+    //setupLevel();  //gameover out of time
   }
       
       playerMove();
-      background(204,255,255);
-      textSize(50);
+      colorBackground();
+      //background(204,255,255);
+      textSize(30);
       text("DEATH APPROACHES ", 200,200);
-      text(40-time,250,250);
+      text(30-time,250,250);
       text(coins,100,200);
       text(lives,100,125);
 
@@ -259,6 +304,7 @@ void displayChecks(){
         time = 0;
         println(coins);
         coins= 0;
+        lives++;
         setupLevel();
       }
       
@@ -270,7 +316,6 @@ void displayChecks(){
 
 
 void displayEnemies(){
-      println(enemies.size());
        Enemy[] toKill = new Enemy[1];
        for (Enemy enemy: enemies){
              enemy.display(p.locX, p.locY); 
@@ -296,7 +341,9 @@ void displayEnemies(){
        
     
      if (lives == 0){
-       setupLevel();
+    restartedGame = false;
+    startedGame = false;
+       //setupLevel();
        
      }
      else if (lives != 3){
@@ -340,4 +387,39 @@ void keyReleased(){
    w = false;
  }*/
 }
+
+
+
+void endLevel(){
+  startedGame = false;
+  platforms.clear();
+  enemies.clear();
+  checks.clear();
+  
+  
+  
+}
+
+
+
+void colorBackground(){
+  
+    
+  if (time < 10){
+    background(ri, gi, bi);
+  }
+  else if (time == 10){
+    r = ri;
+    g = gi;
+    b = bi;
+    background(ri, gi, bi);
+  }else{
+     r = r + (rf - ri)*.00115;
+     g = g + (gf - gi)*.00115;
+     b = b + (bf - bi)*.00115;
+    background((int)r,(int)g, (int)b);
+  }
+  
+}
+
 
