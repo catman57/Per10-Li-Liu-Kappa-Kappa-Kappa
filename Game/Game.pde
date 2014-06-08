@@ -343,11 +343,11 @@ void displayChecks(){
 
 
 void displayEnemies(){
-       Enemy[] toKill = new Enemy[1];
+       Enemy toKill = null;
        for (Enemy enemy: enemies){
              enemy.display(p.locX, p.locY); 
              if (enemy.locY > 650){
-               toKill[0] = enemy;
+               toKill = enemy;
              }
              if (enemy.jumpKilled(p)){
                
@@ -361,8 +361,7 @@ void displayEnemies(){
 
             }
        }
-       
-      enemies.remove(toKill[0]);
+      if (toKill != null)    enemies.remove(toKill);
              
       
        
