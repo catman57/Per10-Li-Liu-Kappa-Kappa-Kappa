@@ -92,7 +92,7 @@ void setupLevel(){
 
 
 void createLevel(){
-  level = 1;
+  
   
   fill(0);
   //p = new Player();
@@ -194,6 +194,7 @@ void ending(){
     player.setGain(0);
     lives = 3;
     coins = 5;
+    level = 1;
     setupLevel();
     
   }else{
