@@ -197,7 +197,7 @@ void draw() {
       background(204,255,255);
       textSize(50);
       text("DEATH APPROACHES ", 200,200);
-      text(20-time,250,250);
+      text(40-time,250,250);
       text(coins,100,200);
       text(lives,100,125);
 
