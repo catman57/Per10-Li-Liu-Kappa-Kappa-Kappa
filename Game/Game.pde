@@ -274,8 +274,11 @@ void displayEnemies(){
        Enemy[] toKill = new Enemy[1];
        for (Enemy enemy: enemies){
              enemy.display(p.locX, p.locY); 
-             if (enemy.jumpKilled(p)){
+             if (enemy.locY > 650){
                toKill[0] = enemy;
+             }
+             if (enemy.jumpKilled(p)){
+               
                
              }
             else if (!attacked && enemy.intersects(p)){
@@ -284,9 +287,13 @@ void displayEnemies(){
                 attacked = true;
                 //break;
 
-             }
+            }
        }
-       enemies.remove(toKill[0]);
+       
+      enemies.remove(toKill[0]);
+             
+      
+       
     
      if (lives == 0){
        setupLevel();

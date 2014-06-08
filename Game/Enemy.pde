@@ -9,6 +9,10 @@ public class Enemy{
   int cur = 1;
   int dir = 1;
   PImage img;
+  boolean killed = false;
+  int yVel = 0;
+  boolean safe;
+  
   Enemy(Platform platform){
     locX = platform.locX + (int)random(platform.width)-30;
     locY = platform.locY - 17;
@@ -19,7 +23,7 @@ public class Enemy{
   }
 
   void display(int pX, int pY){
-    
+    disappear();
     noStroke();
     fill(70);
     if (dir==1){
@@ -61,24 +65,28 @@ public class Enemy{
     
     
   boolean intersects(Player p){
-      return ( pow((p.locX + 525 - 25 - (locX+cur)),2) + pow((p.y - locY), 2) <= pow(25,2));
+      return ( pow((p.locX + 525 - 25 - (locX+cur)),2) + pow((p.y - locY), 2) <= pow(25,2) && !safe );
    
    
   } 
 
 
   boolean jumpKilled(Player p){
-    return (intersects(p) && p.isLanding && p.isJumping);
-    /*
-    if ( p.locX + 525 + 24  > locX + cur && p.locX + 525 < locX + 33 && p.y + p.yVel + 20 > locY && p.y < locY){
-      
-      println(p.y , locY);
+    if (intersects(p) && p.isLanding && p.isJumping){
+      killed = true;
+      safe = true;
       return true;
     }
     return false;
-    */
+
+  }
+  
+  void disappear(){
+    if (killed){
+      yVel++;
+      locY += yVel;
     
-    
+    }
   }
   
   
