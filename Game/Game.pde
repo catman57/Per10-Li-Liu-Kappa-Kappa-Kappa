@@ -291,7 +291,12 @@ void displayEnemies(){
                 safeTime = millis();
                 attacked = true;
                 //break;
+             }/*
+             if (enemy.killedByPlayer(p)){
+               p.jump();
              }       
+             
+             */
      }
      if (lives == 0){
        setup();

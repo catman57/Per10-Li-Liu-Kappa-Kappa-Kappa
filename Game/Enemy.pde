@@ -65,6 +65,12 @@ public class Enemy{
    
    
   } 
+  boolean killedByPlayer(Player p){
+    return (p.locX + 525 + 29 > locX && p.locX + 525 < locX + 29
+          && p.y == locY);
+    
+    
+  }
   
   
   
