@@ -18,7 +18,8 @@ int edgeLeft;
 int edgeRight;
 
 PImage img;
-  
+Animation animation1= new Animation("nyanright",12);
+
 void display(ArrayList<Platform> platforms){
   offEdge(platforms);
   land(platforms);
@@ -27,10 +28,13 @@ void display(ArrayList<Platform> platforms){
   fill(255,0,0);
  // rect(x, y, 25, 30);
  if (dir == 1){
+   //animation1= Animation("nyanright",12);
    img = loadImage("nyanleft.png");
+   //animation1.display(x,y);
  }
  else{
-   img = loadImage("nyancat.png");
+   animation1.display(x,y);
+   //img = loadImage("nyancat.png");
  }
  image(img,x, y);
   
