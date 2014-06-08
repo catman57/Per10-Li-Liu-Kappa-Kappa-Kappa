@@ -21,7 +21,7 @@ public class Enemy{
     
     noStroke();
     fill(70);
-    rect(locX - pX + cur, locY, 25, 30);
+    //rect(locX - pX + cur, locY, 25, 30);
     if (locX + cur  + 30 < rightBound && dir == 1){
       cur++;}
     if (locX + cur + 30 == rightBound){
@@ -33,6 +33,7 @@ public class Enemy{
     if (locX + cur > leftBound && dir == -1){
        cur--; 
     }
+    image(loadImage("nyanleft"+".png"), locX -pX + cur, locY);
       
 
     
