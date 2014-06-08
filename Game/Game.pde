@@ -249,6 +249,7 @@ void draw() {
       text("Food: ", 50,100);      text(coins,125,100);
       text("Lives: ", 50,130);      text(lives,125,130);
       text("Level: ", 850, 70);      text(level, 925, 70);
+      text("Left to kill: ", 50, 600);  text(enemies.size(), 175, 600);
 
    
       
