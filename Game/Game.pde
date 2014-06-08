@@ -453,7 +453,7 @@ void colorBackground(){
 
 
 void processFood(){
-  if (coins > 0 && random(100) < 10 + level * 3){
+  if (coins > 0 && random(100) < 13 + level * 3){
     coins--;
   }
   if (coins == 0){
