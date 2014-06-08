@@ -3,19 +3,23 @@ class Check extends Goal{
  float random;
  boolean special;
  
+ 
+ /*
  Check(int locX, int locY){
   super(locX, locY);
   random= random(10); 
-  if(random<3){
+ // if(random<3){
     img= loadImage("drumstick.svg");
-  }
+ // }
  }
+ */
  
  Check(Platform platform){
    super(platform.locX + (int)random(platform.width + 25) - 25, platform.locY -  20 - (int)random(200));
    if(random(100) < 10){
      special = true;
    }
+   img= loadImage("nyancat.png");
  }
  
 
@@ -26,8 +30,10 @@ class Check extends Goal{
    if (special){
     fill(84, 227, 117); 
    }
-   super.display(pX, pY);
-   image(img,pX,pY);
+   //super.display(pX, pY);
+   imageMode(CENTER);
+   image(img,locX - pX,locY);
+   imageMode(CORNERS);
     
   }
   
@@ -36,7 +42,10 @@ class Check extends Goal{
       if (special){
         fill(84, 227, 117);
       }
-      super.display(pX, pY, dir);
+      //super.display(pX, pY, dir);
+      imageMode(CENTER);
+      image(img,locX -pX,locY);
+      imageMode(CORNERS);
   }  
 
     
