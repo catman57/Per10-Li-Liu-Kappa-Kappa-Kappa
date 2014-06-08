@@ -85,16 +85,8 @@ void land(ArrayList<Platform> platforms){
        y += yVel; 
       }
     
-    /*
-           if (y + yVel>= 550){
-            yVel = 0;
-           y += (580-(y+30));
-            isJumping = false;
-            isLanding = false;
-      }
-    */
-      
-      if (yVel > 0){
+
+      if (yVel >= 0){
         isLanding = true;
       }
       
