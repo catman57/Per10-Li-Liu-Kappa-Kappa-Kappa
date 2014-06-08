@@ -10,9 +10,10 @@ class Check extends Goal{
  }
  
  Check(Platform platform){
-   super(platform.locX + (int)random(platform.width + 25) - 25, platform.locY - 15 - (int)random(100));
+   super(platform.locX + (int)random(platform.width + 25) - 25, platform.locY -  20 - (int)random(200));
  }
  
+
  
  void display(int pX, int pY){
    fill(50, 55, 100);

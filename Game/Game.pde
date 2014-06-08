@@ -26,7 +26,7 @@ boolean attacked = false;
 int lives = 3;
 
 //Start Screen
-Button startButton = new Button("Start", 50, 400, 450, 120, 50);
+//Button startButton = new Button("Start", 50, 400, 450, 120, 50);
 boolean startedGame = false;
 boolean restartedGame = true;
 
@@ -57,6 +57,11 @@ void setup() {
   //background
   size(1000, 650);
   background(204, 255, 255);
+  
+  
+        fill(0);
+  textSize(30);
+  text("Press any button to start.", 285, 350);
  
 }
 
@@ -114,9 +119,9 @@ void createLevel(){
     if (oldLocY < 100){      
        newLocY =  oldLocY + (int)random(150);
     } else if (oldLocY > 500){
-       newLocY = oldLocY - (int)random(100);
+       newLocY = oldLocY - (int)random(150);
     }else{
-       newLocY = oldLocY + (int)random(150) - 75; 
+       newLocY = oldLocY + (int)random(250) - 125; 
     }
     
     platforms.add(new Platform(newLocX, newLocY, (int)random(250) + 75, 25));
@@ -160,9 +165,9 @@ void createLevel(){
 
 
 void startScreen(){
-    startButton.display();
+
     
-    if (mousePressed && startButton.clickedButton(mouseX, mouseY)){
+    if (keyPressed){
       startedGame = true;
       setupLevel();
     }
@@ -182,7 +187,7 @@ void ending(){
   player.setGain(-100);
   fill(255);
   textSize(30);
-  text("Press any button to restart.", 265, 400);
+  text("Press any button to restart.", 275, 350);
   }
 }
 
@@ -299,7 +304,7 @@ void displayChecks(){
          toRemove.add(check); 
         }
       }
-      if (checks.isEmpty() && finish.intersects(p.locX, p.y)){
+      if (enemies.isEmpty() && finish.intersects(p.locX, p.y)){
         println("You win."); 
         time = 0;
         println(coins);
