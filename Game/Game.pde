@@ -31,7 +31,8 @@ boolean startedGame = false;
 boolean restartedGame = true;
 
 //Counters for coins, etc.
-int coins = 0;
+int coins = 5;
+int level = 1;
 
 //background color
 int ri = 204;//186;
@@ -49,14 +50,16 @@ int soundInc = 0;
 
 void setup() {
 
+    size(1000, 650);
+  background(204, 255, 255);
+  
   //sound
   minim= new Minim(this);
   player= minim.loadFile("nyancat.mp3");
   player.play(); 
   player.setGain(0);
   //background
-  size(1000, 650);
-  background(204, 255, 255);
+
   
   
         fill(0);
@@ -67,7 +70,7 @@ void setup() {
 
 void setupLevel(){
  
-  
+  p = new Player();
   createLevel();
 
 
@@ -89,9 +92,10 @@ void setupLevel(){
 
 
 void createLevel(){
+  level = 1;
   
   fill(0);
-  p = new Player();
+  //p = new Player();
 
   //Time
   savedTime= millis();
@@ -103,7 +107,7 @@ void createLevel(){
   checks.clear();
   attacked = false;
   //lives = 3;
-  coins = 0;
+  //coins = 3;
   platforms.add(new Platform(500, 400, 100, 25)); //base starting platform
   
   
@@ -116,7 +120,7 @@ void createLevel(){
     int newLocX = previous.locX + previous.width + (int)random(150) + 50;
     int newLocY;
     int oldLocY = platforms.get(i).locY;
-    if (oldLocY < 100){      
+    if (oldLocY < 150){      
        newLocY =  oldLocY + (int)random(150);
     } else if (oldLocY > 500){
        newLocY = oldLocY - (int)random(150);
@@ -135,10 +139,19 @@ void createLevel(){
  ArrayList<Platform> addPlatforms = new ArrayList<Platform>();
  i = 1;
   while (i < platforms.size()){     
-    if (random(100) < 40)     enemies.add(new Enemy(platforms.get(i))); 
-    if (random(100) < 50)     checks.add(new Check(platforms.get(i)));
+    //if (random(100) < 40)     enemies.add(new Enemy(platforms.get(i))); 
+    if (random(100) < 60)     checks.add(new Check(platforms.get(i)));
     i++;
   }
+  
+  i = 1;
+  while (i < level + 4){
+     int whichPlatform = (int)random(platforms.size()-2) + 1;
+     enemies.add(new Enemy(platforms.get(whichPlatform)));
+    i++;
+    
+  }
+
   finish = new Finish(platforms.get(platforms.size()-1));
 
     /* (For creating multi-layered platforms)
@@ -180,6 +193,7 @@ void ending(){
     startedGame = true;
     player.setGain(0);
     lives = 3;
+    coins = 5;
     setupLevel();
     
   }else{
@@ -214,6 +228,7 @@ void draw() {
   int passedTime=millis()-savedTime;
   if (passedTime>totalTime){
       time++;
+      processFood();
       savedTime=millis();
         if (time > 10){
           player.setGain(player.getGain() - 2);
@@ -229,14 +244,14 @@ void draw() {
       playerMove();
       colorBackground();
       //background(204,255,255);
-      textSize(30);
-      text("DEATH APPROACHES ", 200,200);
-      text(30-time,250,250);
-      text(coins,100,200);
-      text(lives,100,125);
+      textSize(20);
+      text("Time: ", 50,70);      text(30-time,125,70);
+      text("Food: ", 50,100);      text(coins,125,100);
+      text("Lives: ", 50,130);      text(lives,125,130);
+      text("Level: ", 850, 70);      text(level, 925, 70);
 
    
-   
+      
       displayChecks();
       displayPlatforms();
       displayEnemies();
@@ -299,17 +314,23 @@ void displayChecks(){
         check.display(p.locX, p.locY , dir);
         
         if (check.intersects(p.locX, p.y)){
-          println("fsd");
-          coins ++;
+          
+          
+          if (check.special){
+            lives++;
+          }else{
+           coins ++; 
+          }
          toRemove.add(check); 
         }
       }
       if (enemies.isEmpty() && finish.intersects(p.locX, p.y)){
         println("You win."); 
         time = 0;
+        player.setGain(0);
         println(coins);
-        coins= 0;
         lives++;
+        level++;
         setupLevel();
       }
       
@@ -365,6 +386,7 @@ void displayEnemies(){
 
 
 void keyPressed(){
+ if (startedGame){
  if (key == 'a'){
    a = true;
  }
@@ -374,6 +396,7 @@ void keyPressed(){
  if (key == 'w'){
    //w = true;
    p.jump();
+ }
  }
  
 } 
@@ -424,6 +447,20 @@ void colorBackground(){
      b = b + (bf - bi)*.00115;
     background((int)r,(int)g, (int)b);
   }
+  
+}
+
+
+void processFood(){
+  if (coins > 0 && random(100) < 10 + level * 5){
+    coins--;
+  }
+  if (coins == 0){
+    if (random(100) < 20){
+      lives--;
+    }
+  }
+  
   
 }
 
