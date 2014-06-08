@@ -6,7 +6,8 @@ int y = 0;
 //location relative to the map
 int locX = 25;
 int locY = 100;
-
+int animationint1= 0;
+int animationint2= 0;
 int yVel = 0;
 int gravity = 1;
 boolean isJumping = false;
@@ -18,7 +19,7 @@ int edgeLeft;
 int edgeRight;
 
 PImage img;
-Animation animation1= new Animation("nyanright",12);
+
 
 void display(ArrayList<Platform> platforms){
   offEdge(platforms);
@@ -33,8 +34,11 @@ void display(ArrayList<Platform> platforms){
    //animation1.display(x,y);
  }
  else{
-   animation1.display(x,y);
-   //img = loadImage("nyancat.png");
+   img = loadImage("nyanright"+animationint1+".png");
+   animationint1++;
+   if(animationint1>11){
+    animationint1=0;
+  }
  }
  image(img,x, y);
   
