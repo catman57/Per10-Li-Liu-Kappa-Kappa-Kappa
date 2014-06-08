@@ -30,7 +30,11 @@ void display(ArrayList<Platform> platforms){
  // rect(x, y, 25, 30);
  if (dir == 1){
    //animation1= Animation("nyanright",12);
-   img = loadImage("nyanleft.png");
+   img = loadImage("nyanleft"+animationint2+".png");
+   animationint2++;
+   if(animationint2>11){
+     animationint2=0;
+   }
    //animation1.display(x,y);
  }
  else{
