@@ -66,6 +66,20 @@ public class Enemy{
    
   } 
 
+
+  boolean jumpKilled(Player p){
+    return (intersects(p) && p.isLanding);
+    /*
+    if ( p.locX + 525 + 24  > locX + cur && p.locX + 525 < locX + 33 && p.y + p.yVel + 20 > locY && p.y < locY){
+      
+      println(p.y , locY);
+      return true;
+    }
+    return false;
+    */
+    
+    
+  }
   
   
   

@@ -31,8 +31,6 @@ public class Waley extends Enemy{
  }
   
   void whenToLand(){
-    println(locX);
-    println(platforms.get(curPlatform+1).locX);
     if (locX >= platforms.get(curPlatform+1).locX){
       locY += 5;
       jumping = false;

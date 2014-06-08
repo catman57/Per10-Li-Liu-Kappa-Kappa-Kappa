@@ -70,7 +70,6 @@ void land(ArrayList<Platform> platforms){
        yVel = 0;
        isLanding = true;
        isJumping = true;
-       println("up stop");
       }
     
       
@@ -81,7 +80,6 @@ void land(ArrayList<Platform> platforms){
         
         yVel = 0;
         y += needToFall;
-        println("fall stop");
       }
       else{
        y += yVel; 
@@ -96,7 +94,7 @@ void land(ArrayList<Platform> platforms){
       }
     */
       
-      if (yVel >= 0){
+      if (yVel > 0){
         isLanding = true;
       }
       
@@ -136,14 +134,12 @@ void jump(){
     isLanding = false;
     secondJump = true;
     yVel -= 15;
-    println("jump");
   }
   else if (isJumping && secondJump ){
       yVel -= 15;
       gravity = 1;
       secondJump = false;
       
-      println("jump222");
     
   }
   
