@@ -6,8 +6,8 @@ int y = 0;
 //location relative to the map
 int locX = 25;
 int locY = 100;
-int animationint1= 0;
-int animationint2= 0;
+double animationint1= 0;
+double animationint2= 0;
 int yVel = 0;
 int gravity = 1;
 boolean isJumping = false;
@@ -30,16 +30,16 @@ void display(ArrayList<Platform> platforms){
  // rect(x, y, 25, 30);
  if (dir == 1){
    //animation1= Animation("nyanright",12);
-   img = loadImage("nyanleft"+animationint2+".png");
-   animationint2++;
+   img = loadImage("nyanleft"+(int)animationint2+".png");
+   animationint2 = animationint2 + .2;
    if(animationint2>11){
      animationint2=0;
    }
    //animation1.display(x,y);
  }
  else{
-   img = loadImage("nyanright"+animationint1+".png");
-   animationint1++;
+   img = loadImage("nyanright"+(int)animationint1+".png");
+   animationint1 = animationint1 + .2;
    if(animationint1>11){
     animationint1=0;
   }
@@ -107,11 +107,11 @@ void land(ArrayList<Platform> platforms){
 
 boolean landed(ArrayList<Platform> platforms, int yVel, int dir){   //if dir==1, for falling; if dir==0, for checking if hit the bottom of a platform
   for (Platform platform : platforms){
-    if (platform.intersects(locX, y + 30*dir + yVel)
-       || platform.intersects(locX - 25, y + 30*dir + yVel) ){   //If either edge of player is on the platform
+    if (platform.intersects(locX, y + 17*dir + yVel) //!!!! 30-17
+       || platform.intersects(locX - 25, y + 17*dir + yVel) ){   //If either edge of player is on the platform   //!!30-17
        
 
-      needToFall = abs(platform.locY + 40 - 40*dir - (y + 30*dir));
+      needToFall = abs(platform.locY + 40 - 40*dir - (y + 17*dir));  //!!30-17
       
       edgeLeft = platform.locX;
       edgeRight = platform.locX + platform.width;

@@ -89,7 +89,7 @@ void createLevel(){
   int shifted = 0;
   */
   
-  platforms.add(new Platform(500, 400, 100, 40));
+  platforms.add(new Platform(500, 400, 100, 25));
   
   while (i < 10){
    // rand = 0;// (int)random(300);
@@ -116,7 +116,7 @@ void createLevel(){
     
     */
     
-    platforms.add(new Platform(newLocX, newLocY, (int)random(250) + 75, 40));
+    platforms.add(new Platform(newLocX, newLocY, (int)random(250) + 75, 25));
     i++;
    // dist = dist+inc+rand;
   }

@@ -22,6 +22,7 @@ public class Enemy{
     
     noStroke();
     fill(70);
+<<<<<<< HEAD
     if (dir==1){
     img = loadImage("nyanright"+animation1+".png");
     animation1++;
@@ -34,6 +35,8 @@ public class Enemy{
         animation2=0;
       }
     }
+=======
+>>>>>>> 026caa7216b9a61d14d30c589dc08bed3c82d822
     //rect(locX - pX + cur, locY, 25, 30);
     if (locX + cur  + 30 < rightBound && dir == 1){
       cur++;
@@ -51,8 +54,13 @@ public class Enemy{
        cur--; 
        image(img,locX+cur,locY);
     }
+<<<<<<< HEAD
     
   
+=======
+    image(loadImage("nyanleft"+".png"), locX -pX + cur, locY);
+      
+>>>>>>> 026caa7216b9a61d14d30c589dc08bed3c82d822
 
     
      
