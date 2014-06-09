@@ -244,27 +244,14 @@ void draw() {
       
       playerMove();
       colorBackground();
-      //background(204,255,255);
-      textSize(20);
-      text("Time: ", 50,70);      text(30-time,125,70);
-      text("Food: ", 50,100);      text(coins,125,100);
-      text("Lives: ", 50,130);      text(lives,125,130);
-      text("Level: ", 850, 70);      text(level, 925, 70);
-      text("Left to kill: ", 50, 600);  text(enemies.size(), 175, 600);
-
-   
-      
+      displayText();     
       displayChecks();
       displayPlatforms();
       displayEnemies();
-   
-
       p.display(platforms);   
-      fill(0);
-      //rect(0,580, 1000, 100);
       
-  //image(img,p.x,p.y);
-  //}
+      fill(0);
+     
   
 }
   
@@ -273,12 +260,12 @@ void draw() {
 void playerMove(){
      if (a & doesNotCollide(-1)){
         dir = 1;
-        p.locX -= 5;
+        p.locX -= 6;
       }
       else if (d & doesNotCollide(0)){
         
         dir = -1;
-        p.locX += 5;
+        p.locX += 6;
       }
         
        
@@ -299,6 +286,17 @@ boolean doesNotCollide(int shift){    //shift moves the coordinate that is check
   
 }
     
+    
+void displayText(){
+      textSize(20);
+      text("Time: ", 50,70);      text(30-time,125,70);
+      text("Food: ", 50,100);      text(coins,125,100);
+      text("Lives: ", 50,130);      text(lives,125,130);
+      text("Level: ", 850, 70);      text(level, 925, 70);
+      text("Left to kill: ", 50, 600);  text(enemies.size(), 175, 600);
+
+
+}  
     
   
 void displayPlatforms(){
@@ -347,12 +345,9 @@ void displayEnemies(){
        Enemy toKill = null;
        for (Enemy enemy: enemies){
              enemy.display(p.locX, p.locY); 
+             enemy.jumpKilled(p);
              if (enemy.locY > 650){
                toKill = enemy;
-             }
-             if (enemy.jumpKilled(p)){
-               
-               
              }
             else if (!attacked && enemy.intersects(p)){
                 lives--;
@@ -370,16 +365,14 @@ void displayEnemies(){
      if (lives == 0){
     restartedGame = false;
     startedGame = false;
-       //setupLevel();
        
-     }
-     else if (lives != 3){
+     }else if (lives != 3){
        if (millis() - 1500 > safeTime){
          attacked = false;
-     }
+       }
      }
   
-       }
+ }
 
   
 
@@ -411,10 +404,7 @@ void keyReleased(){
  }
  if (key == 'd'){
    d = false;
- }/*
- if (key == 'w'){
-   w = false;
- }*/
+ }
 }
 
 
@@ -424,9 +414,6 @@ void endLevel(){
   platforms.clear();
   enemies.clear();
   checks.clear();
-  
-  
-  
 }
 
 

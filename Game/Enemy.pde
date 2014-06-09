@@ -71,13 +71,11 @@ public class Enemy{
   } 
 
 
-  boolean jumpKilled(Player p){
+  void jumpKilled(Player p){
     if (intersects(p) && p.isLanding && p.isJumping){
       killed = true;
       safe = true;
-      return true;
     }
-    return false;
 
   }
   
