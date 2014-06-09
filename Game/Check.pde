@@ -20,7 +20,9 @@ class Check extends Goal{
      special = true;
    }
    random= random(10);
-   if(random<3){
+   if(special == true){
+     img= loadImage("nyanright0.png");
+   }else if(random<3){
      img= loadImage("drumstick.png");
    }else if(random<6){
      img= loadImage("deadfish.png");
