@@ -16,7 +16,7 @@ class Check extends Goal{
  
  Check(Platform platform){
    super(platform.locX + (int)random(platform.width + 25) - 25, platform.locY -  20 - (int)random(200));
-   if(random(100) < 10){
+   if(random(100) < 15){
      special = true;
    }
    random= random(10);
