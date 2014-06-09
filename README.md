@@ -56,3 +56,7 @@ improve the game.
 Ideas:
 the decsion for nyan cat started late, 
 but blossomed into something nice (i guess). 
+
+Bugs that I know of:
+1.  Because of the way intersection is checked with platform & player (only one set of points), if you jump at it at a weird angle from the side, player might get stuck inside.  Not likely to happen.
+2.  Very very infrequently player will fall through a platform.  I suspect its because when velocity is very high, the point won't intersect with the platform.
