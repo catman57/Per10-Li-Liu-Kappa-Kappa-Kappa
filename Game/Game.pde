@@ -63,8 +63,16 @@ void setup() {
   
   
         fill(0);
+
+  textAlign(CENTER);
+  textSize(50);
+  text("There can only be one.", 500, 200);
   textSize(30);
-  text("Press any button to start.", 285, 350);
+  text("Kill all the others by jumping on them.", 500, 325);
+  text("Also food is important.", 500, 375);
+ 
+  text("Press any button to start.", 500, 500);
+  textAlign(LEFT);
  
 }
 
