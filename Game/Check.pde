@@ -19,7 +19,14 @@ class Check extends Goal{
    if(random(100) < 10){
      special = true;
    }
-   img= loadImage("nyancat.png");
+   random= random(10);
+   if(random<3){
+     img= loadImage("drumstick.png");
+   }else if(random<6){
+     img= loadImage("deadfish.png");
+   }else{
+     img= loadImage("cartooncheese.png");
+   }
  }
  
 
