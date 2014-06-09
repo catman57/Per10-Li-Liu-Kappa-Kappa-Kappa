@@ -22,6 +22,16 @@ EAT YOUR SUBSTANYANCE.
 KILL YOUR FELLOW NYANS. 
 THERE CAN ONLY BE ONE. 
 
+Instructions:
+WASD to move
+there is such thing as a double jump. no worries. 
+other nyans take your lives. you have 1 second to run away from them before they take more.
+eat food. it helps for survival. 
+Nyans that dont move are extra lives. 
+Without wings, you die if you fall to your death. 
+GOOD LUCK. 
+NO TAC NAYNs HERE. 
+
 Coding Process:
 We had fun for the most part, at each step of the way. 
 We worked on things seperately, but told each other what we wanted to do 
